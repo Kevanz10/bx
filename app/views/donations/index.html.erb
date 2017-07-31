@@ -1,0 +1,33 @@
+<% if user_signed_in? %>
+  <li>
+  <%= link_to('Logout', destroy_user_session_path, method: :delete) %>        
+  </li>
+<% else %>
+  <li>
+  <%= link_to('Login', new_user_session_path)  %>  
+  </li>
+<% end %>
+
+<% flash.each do |key, value| %>
+  <%= content_tag :div, value, class: "flash #{key}" %>
+<% end %>
+
+<br>
+<%= current_user.saldo%>
+<br>
+
+<h1>Donaciones</h1>
+<%= link_to  "Hacer donacion", {user: current_user}%>
+
+
+<%= form_tag("/enviar_donacion", method: "post", class: 'sub-form') do %>
+  <%= number_field_tag "donation[value]", "", placeholder: 'Escriba el valor a donar', class: '', type: 'number', required: true%>
+  <%= hidden_field_tag 'asd', value: current_user, class: 'asd' %>
+  <%= submit_tag("ENVIAR", class: "enviar-sub")%>
+<% end %>
+
+<style>
+  .asd{
+    display: none;
+  }
+</style>
