@@ -55,7 +55,7 @@ class DonationsController < ApplicationController
           residuo = saldo
           saldo = 0 
         end
-      end=
+      end
     else
       redirect_to donations_path
       flash[:notice] = 'saldo es insuficiente para realizar donación'

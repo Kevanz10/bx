@@ -1,390 +1,308 @@
 <h2>Sign up</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
 
 <%= render "devise/shared/links" %>
-
 
 <!-- Page Wrapper -->
 <div id="page-wrapper" class="page-wrapper">
 
-    <!-- Main Content -->
-    <section class="main-content">
+  <!-- Main Content -->
+  <section class="main-content">
 
-        <!-- Navigation Bar -->
-        <nav id="main-nav" class="main-nav colored-menu">
+    <!-- Navigation Bar -->
+    <nav id="main-nav" class="main-nav colored-menu">
+      <div class="container">
+        <!-- Logo Container -->
+        <div class="logo-container">
+            <a href="index.html" class="logo">
+                <i class="pe-7s-cash"></i>
+                <p>Investable</p>
+            </a>
+        </div>
 
-            <div class="container">
+        <!-- Right Side Links -->
+        <div class="right-links">
 
-                <!-- Logo Container -->
-                <div class="logo-container">
-                    <a href="index.html" class="logo">
-                        <i class="pe-7s-cash"></i>
-                        <p>Investable</p>
-                    </a>
-                </div>
+            <!-- Menu Start -->
+            <ul id="menu" class="menu">
 
-                <!-- Right Side Links -->
-                <div class="right-links">
+                <!-- Menu Item -->
+                <li><a href="#" class="menu-item">Home</a></li>
 
-                    <!-- Menu Start -->
-                    <ul id="menu" class="menu">
+                <!-- Menu Item -->
+                <li><a href="#" class="menu-item has-drop">Pages</a>
 
-                        <!-- Menu Item -->
-                        <li><a href="#" class="menu-item">Home</a></li>
-
-                        <!-- Menu Item -->
-                        <li><a href="#" class="menu-item has-drop">Pages</a>
-
-                            <ul class="dropdown">
-                                <li>
-                                    <a href="page-about.html">About Us
-                                    <span>Get to know us</span></a>
-                                </li>
-                                <li>
-                                    <a href="page-contact-form.html">Contact Us
-                                    <span>Get in touch</span></a>
-                                </li>
-                                <li>
-                                    <a href="page-pricing.html">Pricing
-                                    <span>Check our low prices</span></a>
-                                </li>
-                                <li>
-                                    <a href="page-services-grid.html">Services
-                                    <span>Find out everything we do</span></a>
-                                </li>
-                                <li>
-                                    <a href="page-login.html">Login
-                                    <span>Manage your account</span></a>
-                                </li>
-                                <li>
-                                    <a href="page-register.html">Register
-                                    <span>Sign up today</span></a>
-                                </li>
-                                <li>
-                                    <a href="page-faq.html">FAQ
-                                    <span>Got questions? We have answers</span></a>
-                                </li>
-                                <li>
-                                    <a href="page-404.html">404 Error
-                                    <span>Error page</span></a>
-                                </li>
-                                <li>
-                                    <a href="page-maintenance.html">Maintenance
-                                    <span>Placeholder page</span></a>
-                                </li>
-                            </ul>
-
-                        </li>
-
-                        <!-- Menu Item -->
-                        <li><a href="#" class="menu-item has-drop">Services</a>
-
-                            <ul class="dropdown">                             
-                                <li><a href="page-services-grid.html">Services Grid
-                                <span>services in a grid layout</span></a></li>
-                                <li><a href="page-services-list.html">Services List
-                                <span>services in a list layout</span></a></li>
-                            </ul>
-                            
-                        </li>
-
-                        <!-- Menu Item -->
-                        <li><a href="#" class="menu-item has-drop">Portfolio</a>
-
-                            <ul class="dropdown">
-                                <li><a href="portfolio-3col.html">3 Column
-                                <span>3 col portfolio layout</span></a></li>
-                                <li><a href="portfolio-2col.html">2 Column
-                                <span>2 col portfolio layout</span></a></li>
-                                <li><a href="portfolio-2col-sidebar.html">2 Column Sidebar
-                                <span>2 col portfolio layout w/ sidebar</span></a></li>
-                                <li><a href="portfolio-single.html">Single Item
-                                <span>case study of work</span></a></li>
-                                
-                            </ul>
-
-                        </li>
-
-                        <!-- Menu Item -->
-                        <li><a href="#" class="menu-item has-drop">News</a>
-
-                            <ul class="dropdown">
-                                <li><a href="blogs-3col.html">3 Column Timeline
-                                <span>Blog timeline in 3 columns</span></a></li>
-                                <li><a href="blogs-2col-sidebar.html">2 Column Timeline w/ sidebar
-                                <span>2 column timeline with sidebar</span></a></li>
-                                <li><a href="blogs-post-sidebar.html">Blog Post w/ Sidebar
-                                <span>Display posts in a sidebar</span></a></li>
-                                <li><a href="blogs-post-nosidebar.html">Blog Post No Sidebar
-                                <span>Display posts without a sidebar</span></a></li>
-                            </ul>
-
-                        </li>
-
-                        <!-- Menu Item -->
-                        <li><a href="#" class="menu-item has-drop">Contact</a>
-
-                            <ul class="dropdown">
-                                <li>
-                                    <a href="page-contact-form.html">Contact Us - 1
-                                    <span>With Contact Form</span></a>
-                                </li>
-                                <li>
-                                    <a href="page-contact-noform.html">Contact Us - 2
-                                    <span>With only contact info</span></a>
-                                </li>
-                            </ul>
-
-                        </li>
-
+                    <ul class="dropdown">
                         <li>
-                            <a href="page-register.html" class="button button-sm button-primary">Sign Up</a>
+                            <a href="page-about.html">About Us
+                            <span>Get to know us</span></a>
                         </li>
-
+                        <li>
+                            <a href="page-contact-form.html">Contact Us
+                            <span>Get in touch</span></a>
+                        </li>
+                        <li>
+                            <a href="page-pricing.html">Pricing
+                            <span>Check our low prices</span></a>
+                        </li>
+                        <li>
+                            <a href="page-services-grid.html">Services
+                            <span>Find out everything we do</span></a>
+                        </li>
+                        <li>
+                            <a href="page-login.html">Login
+                            <span>Manage your account</span></a>
+                        </li>
+                        <li>
+                            <a href="page-register.html">Register
+                            <span>Sign up today</span></a>
+                        </li>
+                        <li>
+                            <a href="page-faq.html">FAQ
+                            <span>Got questions? We have answers</span></a>
+                        </li>
+                        <li>
+                            <a href="page-404.html">404 Error
+                            <span>Error page</span></a>
+                        </li>
+                        <li>
+                            <a href="page-maintenance.html">Maintenance
+                            <span>Placeholder page</span></a>
+                        </li>
                     </ul>
 
-                </div>
+                </li>
 
+                <!-- Menu Item -->
+                <li><a href="#" class="menu-item has-drop">Services</a>
+
+                    <ul class="dropdown">                             
+                        <li><a href="page-services-grid.html">Services Grid
+                        <span>services in a grid layout</span></a></li>
+                        <li><a href="page-services-list.html">Services List
+                        <span>services in a list layout</span></a></li>
+                    </ul>
+                    
+                </li>
+
+                <!-- Menu Item -->
+                <li><a href="#" class="menu-item has-drop">Portfolio</a>
+
+                    <ul class="dropdown">
+                        <li><a href="portfolio-3col.html">3 Column
+                        <span>3 col portfolio layout</span></a></li>
+                        <li><a href="portfolio-2col.html">2 Column
+                        <span>2 col portfolio layout</span></a></li>
+                        <li><a href="portfolio-2col-sidebar.html">2 Column Sidebar
+                        <span>2 col portfolio layout w/ sidebar</span></a></li>
+                        <li><a href="portfolio-single.html">Single Item
+                        <span>case study of work</span></a></li>
+                        
+                    </ul>
+
+                </li>
+
+                <!-- Menu Item -->
+                <li><a href="#" class="menu-item has-drop">News</a>
+
+                    <ul class="dropdown">
+                        <li><a href="blogs-3col.html">3 Column Timeline
+                        <span>Blog timeline in 3 columns</span></a></li>
+                        <li><a href="blogs-2col-sidebar.html">2 Column Timeline w/ sidebar
+                        <span>2 column timeline with sidebar</span></a></li>
+                        <li><a href="blogs-post-sidebar.html">Blog Post w/ Sidebar
+                        <span>Display posts in a sidebar</span></a></li>
+                        <li><a href="blogs-post-nosidebar.html">Blog Post No Sidebar
+                        <span>Display posts without a sidebar</span></a></li>
+                    </ul>
+
+                </li>
+
+                <!-- Menu Item -->
+                <li><a href="#" class="menu-item has-drop">Contact</a>
+
+                    <ul class="dropdown">
+                        <li>
+                            <a href="page-contact-form.html">Contact Us - 1
+                            <span>With Contact Form</span></a>
+                        </li>
+                        <li>
+                            <a href="page-contact-noform.html">Contact Us - 2
+                            <span>With only contact info</span></a>
+                        </li>
+                    </ul>
+
+                </li>
+
+                <li>
+                    <a href="page-register.html" class="button button-sm button-primary">Sign Up</a>
+                </li>
+
+            </ul>
+        </div>
+      </div> 
+    </nav>
+    <!--// Navigation Bar -->
+
+    <!-- Page title -->
+    <header class="page-title">
+      <div class="container">
+        <div class="row">
+          <ol class="breadcrumb">
+
+              <li><a href="#">Home</a></li>
+              <li><a href="#">Pages</a></li>
+              <li><a href="#" class="active">Register</a></li>
+          </ol>
+          <h1>Register for an account</h1>
+          <p>After you register for an account you will be able to use all our premium features.</p>
+        </div><!-- //row -->      
+      </div><!-- //container -->
+    </header>
+    <!-- //page title -->
+
+    <!-- header links -->
+    <div class="header-links">
+      <div class="container">
+        <div class="row">
+          <ul>
+            <li>
+                <a href="page-login.html">Login</a>
+            </li>
+            <li>
+                <a href="page-register.html" class="active">Register</a>
+            </li>
+            <li>
+          </ul>
+        </div><!-- //row -->
+      </div><!-- //container -->
+    </div>
+    <!-- //header links -->
+
+    <!-- login -->
+    <div class="pt80 pb80">
+      <div class="container">
+        <div class="row">
+          <p class="text-center mb20">Already have an account? <a href="page-login.html">Log In</a></p>
+          <div class="login-box col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-12 col-xs-offset-0">
+            <h3>Register</h3>
+
+            <%= form_for(resource, as: resource_name, url: registration_path(resource_name), class: 'col-sm-10 col-sm-offset-1 col-xs-12 col-xs-offset-0') do |f| %>
+              <%= devise_error_messages! %>
+
+              <div class="field">
+                <%= f.label :email %><br />
+                <%= f.email_field :email, autofocus: true %>
+              </div>
+
+              <div class="field">
+                <%= f.label :password %>
+                <% if @minimum_password_length %>
+                <em>(<%= @minimum_password_length %> characters minimum)</em>
+                <% end %><br />
+                <%= f.password_field :password, autocomplete: "off" %>
+              </div>
+
+              <div class="field">
+                <%= f.label :password_confirmation %><br />
+                <%= f.password_field :password_confirmation, autocomplete: "off" %>
+              </div>
+
+              <div class="actions">
+                <%= f.submit "Sign up", class: 'button button-md btn-block button-primary' %>
+              </div>
+            <% end %>
+          </div>
+        </div><!-- //row -->
+      </div><!-- //container -->
+    </div>
+    <!-- //login -->
+
+    <!-- call to action section -->
+    <div class="cta-1 bg-img bg-img-3 color-overlay pt80 pb80">
+      <div class="container">
+        <div class="table">
+          <div class="row">           
+            <div class="mb-sm-40 col-md-8 col-sm-12 col-xs-12 content text-center-sm">
+              <span>Limited Time Offer</span>
+              <h4 class="section-title">Contact Us Today and Get a Free 6 Month Subscription to Our Premium Newsletter.</h4>
+              <p>Nunc cursus imperdiet tristique. Donec placerat maximus dignissim. Pellentesque interdum ligula id enim interdum ullamcorper. Vivamus ac mauris egestas nisl pharetra porttitor quis ut orci. Curabitur ullamcorper ex ut massa lobortis sagittis. Aliquam tincidunt elit ac risus sodales egestas.</p>
             </div>
-            
-        </nav>
-        <!--// Navigation Bar -->
-
-        <!-- Page title -->
-        <header class="page-title">
-
-            <div class="container">
-
-                <div class="row">
-                    
-                    <ol class="breadcrumb">
-
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Pages</a></li>
-                        <li><a href="#" class="active">Register</a></li>
-                        
-                    </ol>
-
-                    <h1>Register for an account</h1>
-                    <p>After you register for an account you will be able to use all our premium features.</p>
-
-                </div><!-- //row -->
-                
-            </div><!-- //container -->
-            
-        </header>
-        <!-- //page title -->
-
-        <!-- header links -->
-        <div class="header-links">
-
-            <div class="container">
-
-                <div class="row">
-                    
-                    <ul>
-                        <li>
-                            <a href="page-login.html">Login</a>
-                        </li>
-                        <li>
-                            <a href="page-register.html" class="active">Register</a>
-                        </li>
-                        <li>
-                    </ul>
-
-                </div><!-- //row -->
-                
-            </div><!-- //container -->
-             
+            <div class="col-md-4 col-sm-12 col-xs-12 column side text-right text-center-sm">
+                 <a href="#" class="button button-primary button-md">Contact Us Today</a>
+            </div>
+          </div><!-- //row -->
         </div>
-        <!-- //header links -->
+      </div><!-- //container -->
+    </div>
+    <!-- //call to action section -->
 
-        <!-- login -->
-        <div class="pt80 pb80">
+    <!-- footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="row"> 
+          <div class="col-md-4 col-sm-12 col-xs-12 mb-sm-40">
+            <a href="index.html" class="logo mb20">
+                <i class="pe-7s-cash"></i>
+                <p>Investable</p>
+            </a>
+            <p class="mb10">Nullam pellentesque mauris et lorem congue varius. Morbi iaculis diam leo, ut tempus tellus laoreet porttitor.</p>
+            <ul class="list-sm">
+                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+            </ul>
+          </div>
 
-            <div class="container">
+          <div class="col-md-2 col-sm-6 col-xs-12 mb-sm-40">
+            <h6>Information</h6>
+            <ul class="list-links">
+              <li><a href="">About Us</a></li>
+              <li><a href="">Our Process</a></li>
+              <li><a href="">Careers</a></li>
+              <li><a href="">Services</a></li>
+            </ul>
+          </div>
 
-                <div class="row">
+          <div class="col-md-2 col-sm-6 col-xs-12 mb-sm-40">
+            <h6>Support</h6>
 
-                    <p class="text-center mb20">Already have an account? <a href="page-login.html">Log In</a></p>
-                    
-                    <div class="login-box col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-12 col-xs-offset-0">
+            <ul class="list-links">
+              <li><a href="">FAQ</a></li>
+              <li><a href="">Contact</a></li>
+              <li><a href="">Prospectus</a></li>
+              <li><a href="">Investor Relations</a></li>
+            </ul>  
+          </div>
 
-                        <h3>Register</h3>
-                        
-                        <form action="" method="post" class="col-sm-10 col-sm-offset-1 col-xs-12 col-xs-offset-0">
+          <div class="col-md-4 col-sm-12 col-xs-12 mb-sm-40">
+            <h6>Subscribe</h6>
+            <p>Sign up for all the latest news, daily stock picks, and investment advice from our team of pros.</p>
+            <form action="" method="post" class="newsletter">
+                <input type="email" name="newsletter" placeholder="Enter Your Email">
+                <button><i class="fa fa-paper-plane"></i></button>
+            </form>
+          </div>
 
-                            <div class="field">
-                                <label>Full Name</label>
-                                <input type="text" name="name" required="required">   
-                            </div>
-
-                            <div class="field">
-                                <label>Email</label>
-                                <input type="email" name="email" required="required">   
-                            </div>
-
-                            <div class="field">
-                                <label>Password</label>
-                                <input name="password" type="password" required="required">   
-                            </div>
-
-                            <div class="field">
-                                <button class="button button-md btn-block button-primary">Register</button>
-                            </div>
-
-                            <div class="login-footer text-center mb40">
-                                <p>By clicking Register you accept the <a href="#">Terms of Use</a></p>
-                            </div>
-                        </form>
-
-                    </div>
-
-                </div><!-- //row -->
-                
-            </div><!-- //container -->
-             
-        </div>
-        <!-- //login -->
-
-        <!-- call to action section -->
-        <div class="cta-1 bg-img bg-img-3 color-overlay pt80 pb80">
-
-            <div class="container">
-
-                <div class="table">
-
-                    <div class="row">
-                        
-                        <div class="mb-sm-40 col-md-8 col-sm-12 col-xs-12 content text-center-sm">
-
-                            <span>Limited Time Offer</span>
-                            <h4 class="section-title">Contact Us Today and Get a Free 6 Month Subscription to Our Premium Newsletter.</h4>
-                            <p>Nunc cursus imperdiet tristique. Donec placerat maximus dignissim. Pellentesque interdum ligula id enim interdum ullamcorper. Vivamus ac mauris egestas nisl pharetra porttitor quis ut orci. Curabitur ullamcorper ex ut massa lobortis sagittis. Aliquam tincidunt elit ac risus sodales egestas.</p>
-                            
-                        </div>
-
-                        <div class="col-md-4 col-sm-12 col-xs-12 column side text-right text-center-sm">
-                             <a href="#" class="button button-primary button-md">Contact Us Today</a>
-                        </div>
-
-                    </div><!-- //row -->
-
-                </div>
-                
-            </div><!-- //container -->
-             
-        </div>
-        <!-- //call to action section -->
-
-        <!-- footer -->
-        <footer class="footer">
-
-            <div class="container">
-
-                <div class="row">
-                    
-                    <div class="col-md-4 col-sm-12 col-xs-12 mb-sm-40">
-
-                        <a href="index.html" class="logo mb20">
-                            <i class="pe-7s-cash"></i>
-                            <p>Investable</p>
-                        </a>
-                        <p class="mb10">Nullam pellentesque mauris et lorem congue varius. Morbi iaculis diam leo, ut tempus tellus laoreet porttitor.</p>
-                        <ul class="list-sm">
-                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                        </ul>
-
-                    </div>
-
-                    <div class="col-md-2 col-sm-6 col-xs-12 mb-sm-40">
-
-                        <h6>Information</h6>
-
-                        <ul class="list-links">
-                            <li><a href="">About Us</a></li>
-                            <li><a href="">Our Process</a></li>
-                            <li><a href="">Careers</a></li>
-                            <li><a href="">Services</a></li>
-                        </ul>
-                        
-                    </div>
-
-                    <div class="col-md-2 col-sm-6 col-xs-12 mb-sm-40">
-
-                        <h6>Support</h6>
-
-                        <ul class="list-links">
-                            <li><a href="">FAQ</a></li>
-                            <li><a href="">Contact</a></li>
-                            <li><a href="">Prospectus</a></li>
-                            <li><a href="">Investor Relations</a></li>
-                        </ul>
-                        
-                    </div>
-
-                    <div class="col-md-4 col-sm-12 col-xs-12 mb-sm-40">
-
-                        <h6>Subscribe</h6>
-                        <p>Sign up for all the latest news, daily stock picks, and investment advice from our team of pros.</p>
-                        <form action="" method="post" class="newsletter">
-                            <input type="email" name="newsletter" placeholder="Enter Your Email">
-                            <button><i class="fa fa-paper-plane"></i></button>
-                        </form>
-
-                    </div>
-
-                    <div class="col-xs-12 sub-footer">
-                        <p>Copyright &copy; 2016 OneClickPixels. All rights reserved.  <a href="https://icons8.com" target="_blank">Icon pack by Icons8</a></p>
-                        <ul class="list-cc">
-                            <li><img src="https://maxcdn.icons8.com/Color/PNG/48/Finance/visa-48.png" title="Visa"></li>
-                            <li><img src="https://maxcdn.icons8.com/Color/PNG/48/Finance/discover-48.png" title="Visa"></li>
-                            <li><img src="https://maxcdn.icons8.com/Color/PNG/48/Finance/paypal-48.png" title="Visa"></li>
-                            <li><img src="https://maxcdn.icons8.com/Color/PNG/48/Finance/am_ex-48.png" title="Visa"></li>
-                            <li><img src="https://maxcdn.icons8.com/Color/PNG/48/Finance/google_wallet-48.png" title="Visa"></li>
-                            <li><img src="https://maxcdn.icons8.com/Color/PNG/48/Finance/bitcoin-48.png" title="Visa"></li>
-                        </ul>
-                    </div>
-
-                </div><!-- //row -->
-                
-            </div><!-- //container -->
-             
-        </footer>
-        <!-- //footer -->
-        
-
-    </section>
-    <!-- //Main Content -->
-
+          <div class="col-xs-12 sub-footer">
+            <p>Copyright &copy; 2016 OneClickPixels. All rights reserved.  <a href="https://icons8.com" target="_blank">Icon pack by Icons8</a></p>
+            <ul class="list-cc">
+                <li><img src="https://maxcdn.icons8.com/Color/PNG/48/Finance/visa-48.png" title="Visa"></li>
+                <li><img src="https://maxcdn.icons8.com/Color/PNG/48/Finance/discover-48.png" title="Visa"></li>
+                <li><img src="https://maxcdn.icons8.com/Color/PNG/48/Finance/paypal-48.png" title="Visa"></li>
+                <li><img src="https://maxcdn.icons8.com/Color/PNG/48/Finance/am_ex-48.png" title="Visa"></li>
+                <li><img src="https://maxcdn.icons8.com/Color/PNG/48/Finance/google_wallet-48.png" title="Visa"></li>
+                <li><img src="https://maxcdn.icons8.com/Color/PNG/48/Finance/bitcoin-48.png" title="Visa"></li>
+            </ul>
+          </div>
+        </div><!-- //row -->
+      </div><!-- //container -->
+    </footer>
+    <!-- //footer -->
+  </section>
+  <!-- //Main Content -->
 </div>
     <!-- // Page Wrapper -->
 
