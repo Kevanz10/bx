@@ -6,15 +6,9 @@
 @import  "https://fonts.googleapis.com/css?family=Lora:400italic";
 
 /*Font Icon(s)*/
-@import  "fonts/font-awesome/css/font-awesome.min.css";
-@import  "fonts/pe-icon-7-stroke/css/pe-icon-7-stroke.css";
+@import  "/assets/fonts/font-awesome/css/font-awesome.min.css";
+@import  "/assets/fonts/pe-icon-7-stroke/css/pe-icon-7-stroke.css";
 
-/*Stylesheet(s)*/
-@import  "bootstrap.min.css";
-@import  "slick.css";
-@import  "slick-theme.css";
-@import  "bootstrap.min.css";
-@import  "slicknav.min.css";
 
 
 
@@ -27,7 +21,7 @@ Project: Investable
 
 Version: 1
 
-Primary use: Multipupose Corporate, Finance, Business Template 
+Primary use: Multipupose Corporate, Finance, Business Template
 
 
 ----------------------------------------------------
@@ -45,7 +39,7 @@ Primary use: Multipupose Corporate, Finance, Business Template
 
 5. Color Shortcodes
 
-6. Icon Boxes 
+6. Icon Boxes
 
 7. Form Elements
 
@@ -219,7 +213,7 @@ blockquote footer {
 }
 
 pre code {
-   
+
 }
 
 select {
@@ -241,7 +235,7 @@ select option {
 }
 
 header {
-    
+
 }
 
 code {
@@ -269,7 +263,7 @@ canvas {
 /*Color and background of highlighted content*/
 ::selection {
   background: #6d9f00;
-  color: #fff; 
+  color: #fff;
 }
 ::-moz-selection {
   background: #0e0e0e;
@@ -492,7 +486,7 @@ label {
     font-size: 11px;
     font-weight: 700;
     letter-spacing: .4px;
-    color: #b1b1b1; 
+    color: #b1b1b1;
 }
 
 input,
@@ -575,7 +569,7 @@ Call to Action Section
     font-size: 13px;
     line-height: 1.7;
     letter-spacing: .2px;
-    
+
 }
 
 .cta-2,
@@ -879,7 +873,7 @@ Toggle appearance when menu opens
 }
 
 .slicknav_open.slicknav_btn .slicknav_icon-bar:nth-child(3) {
-    top: 50%;    
+    top: 50%;
     -webkit-transform: translate(-50%,-50%) rotate(-45deg);
     transform: translate(-50%,-50%) rotate(-45deg);
 }
@@ -979,7 +973,7 @@ Logo
 /* -----------------------------------------------------------------------------
 
 Menu on the right
-  
+
 ----------------------------------------------------------------------------- */
 .menu {
     display: inline-block;
@@ -1616,7 +1610,7 @@ Portfolio items
 
 .work-item:hover img {
     -webkit-transform: scale(1.1);
-    transform: scale(1.1);   
+    transform: scale(1.1);
 }
 
 .work-item h4 {
@@ -1675,7 +1669,7 @@ FAQ
 /* -----------------------------------------------------------------------------
 
 Team
-  
+
 ----------------------------------------------------------------------------- */
 .team-member {
     text-align: center;
@@ -1684,7 +1678,7 @@ Team
 
 .team-member .image-holder {
     position: relative;
-    overflow: hidden; 
+    overflow: hidden;
     border: 1px solid #eaeaea;
 }
 
@@ -1758,7 +1752,7 @@ Service Box
 
 .service-box .info {
     padding: 20px;
-} 
+}
 
 .service-box h4 {
     font-weight: 600;
@@ -1836,7 +1830,7 @@ Blogs
 .post-snippet p {
     color: #888;
     font-size: 13px;
-    margin-bottom: 10px;   
+    margin-bottom: 10px;
 }
 
 .post-snippet .post-info {
@@ -1936,13 +1930,13 @@ Blogs
     padding: 0;
 }
 
-.widget { 
+.widget {
     margin-bottom: 50px;
     overflow: hidden;
     border-radius: 2px;
 }
 
-.widget .widget-title { 
+.widget .widget-title {
     font-weight: 700;
     text-transform: uppercase;
     color: #5d5d5d;
@@ -1962,7 +1956,7 @@ Blogs
     font-size: 11px;
 }
 
-.widget ul { 
+.widget ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -1976,12 +1970,12 @@ Blogs
 }
 
 .widget .comment-on a,
-.widget li a { 
+.widget li a {
     color: #111;
     font-size: 13px;
 }
 
-.widget li .blog-thumb-container { 
+.widget li .blog-thumb-container {
     height: 40px;
     width: 40px;
     border-radius: 50%;
@@ -1990,7 +1984,7 @@ Blogs
     margin-right: 10px;
 }
 
-.widget li .blog-thumb-container img { 
+.widget li .blog-thumb-container img {
     width: 100%;
 }
 
@@ -2496,7 +2490,7 @@ Margin Shortcodes
     .js #menu {
         display:none;
     }
-    
+
     .js .slicknav_menu {
         display:block;
     }
@@ -2534,11 +2528,11 @@ Margin Shortcodes
 
     .sidebar-gap {
         padding-right: initial;
-    }   
+    }
 
     .blog-sidebar {
         margin-top: 60px;
-    } 
+    }
 
     .widget.cta-small {
         background: #30373b;
@@ -2695,4 +2689,3 @@ Margin Shortcodes
         text-align: center;
     }
 }
-
