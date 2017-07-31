@@ -55,6 +55,29 @@ Rails.application.configure do
   # Use a real queuing backend for Active Job (and separate queues per environment)
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "project_bx_#{Rails.env}"
+    
+    config.action_mailer.default_url_options = { host: 'heroku', port: 3000 }
+
+    # Raises error for missing translations
+    # config.action_view.raise_on_missing_translations = true
+    config.action_mailer.raise_delivery_errors = true
+
+    config.action_mailer.perform_deliveries = true
+
+    config.action_mailer.delivery_method = :smtp
+
+    config.action_mailer.default :charset => "utf-8"
+
+    ActionMailer::Base.smtp_settings = {
+    :user_name => ENV["SENDGRID_USER"],
+    :password =>  ENV["SENDGRID_PASSWORD"],
+    :domain => 'creaconstructora.com',
+    :address => 'smtp.sendgrid.net',
+    :port => 587,
+    :authentication => :plain,
+    :enable_starttls_auto => true
+  }
+
   config.action_mailer.perform_caching = false
 
   # Ignore bad email addresses and do not raise email delivery errors.

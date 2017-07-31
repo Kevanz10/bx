@@ -1,8 +1,8 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+  devise :database_authenticatable, :registerable, :confirmable, 
+         :recoverable, :rememberable, :trackable, :validatable, :lockable
 
   has_many :donations
 
@@ -11,4 +11,5 @@ class User < ApplicationRecord
   def set_saldo_zero
     self.saldo ||= 0
   end
+    
 end

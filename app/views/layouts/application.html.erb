@@ -6,6 +6,10 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.4.3/sweetalert2.min.js'>   
+    </script>
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.4.3/sweetalert2.min.css' rel='stylesheet'>
+      
   </head>
 
   <body>
@@ -16,7 +20,7 @@
         <div class="main-content">
 
             <!-- Navigation Bar -->
-            <nav id="main-nav" class="main-nav transparent-light">
+            <nav id="main-nav" class="main-nav colored-menu">
 
                 <div class="container">
 
@@ -35,7 +39,7 @@
                         <ul id="menu" class="menu">
 
                             <!-- Menu Item -->
-                            <li><a href="#" class="menu-item">Inicio</a></li>
+           
 
                             <!-- Menu Item -->
                             <li><a href="#" class="menu-item">Que es?</a>
@@ -51,7 +55,7 @@
                             </li>
 
                             <li>
-                              <a href="#" class="menu-item has-drop">Información</a>
+                              <a href="#" class="menu-item has-drop">Info</a>
                                 <ul class="dropdown">
                                     <li>
                                         <a href="page-about.html">Ayuda
@@ -69,16 +73,19 @@
                             <!-- Menu Item -->
                             <li><a href="#" class="menu-item ">Contact</a>
                             </li>
-
-
-                            <li><a href="/users/sign_in" class="menu-item ">Login</a>
-                            </li>
-
-
-                            <li>
+                            
+                            <% if user_signed_in? %>
+                            
+                            <li> <%= link_to current_user.email.truncate(7), edit_user_registration_path, :class => 'menu-item' %> </li>
+                                <li> <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'button button-sm button-primary'  %>
+                                </li>
+                            <% else %>
+                                <li><a href="/users/sign_in" class="menu-item ">Login</a>
+                                </li>
+                                <li>
                                 <a href="/users/sign_up" class="button button-sm button-primary">Sign Up</a>
-                            </li>
-
+                                </li>
+                            <% end %>
                         </ul>
 
                     </div>
@@ -89,7 +96,17 @@
 
 
             
+             <% if notice %>
+                <script>
+                    swal("<%= notice %>");
+                </script>
+            <% end %>
 
+            <% if alert%>
+                <script>
+                  swal("<%= alert %>");
+                </script>
+            <% end %>
 
 
             <%= yield %>
