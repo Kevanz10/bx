@@ -11,5 +11,4 @@ class User < ApplicationRecord
   def set_saldo_zero
     self.saldo ||= 0
   end
-    
 end

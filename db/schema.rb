@@ -10,14 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170731224958) do
+ActiveRecord::Schema.define(version: 20170801205125) do
 
   create_table "donations", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.float    "residue"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
     t.float    "value"
     t.integer  "user_id"
+    t.decimal  "pending"
+    t.integer  "status",     default: 0
+  end
+
+  create_table "requests", force: :cascade do |t|
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "user_id"
+    t.decimal  "value"
+    t.integer  "status",     default: 0
+    t.decimal  "pending"
+  end
+
+  create_table "transfers", force: :cascade do |t|
+    t.decimal  "value"
+    t.integer  "status",     default: 0
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "users", force: :cascade do |t|
