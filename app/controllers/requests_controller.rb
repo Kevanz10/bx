@@ -20,6 +20,12 @@ class RequestsController < ApplicationController
   def edit
   end
 
+  def request_donation
+    if current_user.saldo > 0
+      @@send_donation = User.where()
+    end
+  end
+  
   # POST /Donations
   # POST /Donations.json
   def create

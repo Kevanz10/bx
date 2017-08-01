@@ -4,5 +4,5 @@ class Donation < ApplicationRecord
 
   belongs_to :user
   has_many :transfers
-  enum status: { completed: 0, pending: 1 }
+  enum status: { pending: 0, completed: 1 }
 end
