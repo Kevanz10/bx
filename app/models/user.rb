@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable, :lockable
 
   has_many :donations
-
+  has_many :request
   before_save :set_saldo_zero
   
   def set_saldo_zero
