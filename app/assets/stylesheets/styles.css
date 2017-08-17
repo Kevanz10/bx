@@ -284,12 +284,12 @@ Background Images /overlays and bg colors
 }
 
 /*individual classes for images*/
-.bg-img-1 { background-image: url(../images/bg-imgs/bg-img-1.jpg); }
-.bg-img-2 { background-image: url(../images/bg-imgs/bg-img-2.jpg); }
-.bg-img-3 { background-image: url(../images/bg-imgs/bg-img-3.jpg); }
-.bg-img-4 { background-image: url(../images/bg-imgs/bg-img-4.jpg); }
-.bg-img-5 { background-image: url(../images/bg-imgs/bg-img-5.jpg); }
-.bg-img-6 { background-image: url(../images/bg-imgs/bg-img-6.jpg); }
+.bg-img-1 { background-image: url(/assets/images/bg-imgs/bg-img-1.jpg); }
+.bg-img-2 { background-image: url(/assets/images/bg-imgs/bg-img-2.jpg); }
+.bg-img-3 { background-image: url(/assets/images/bg-imgs/client-testimonials.jpg); }
+.bg-img-4 { background-image: url(/assets/images/bg-imgs/bg-img-4.jpg); }
+.bg-img-5 { background-image: url(/assets/images/bg-imgs/bg-img-5.jpg); }
+.bg-img-6 { background-image: url(/assets/images/bg-imgs/bg-img-6.jpg); }
 
 /*color overlay as seen in the header*/
 .color-overlay {
@@ -434,6 +434,7 @@ Icon Boxes
 .icon-box-2 {
     padding: 40px;
     border: 1px solid #eaeaea;
+    box-shadow: 3px 3px 12px rgba(211, 211, 211, 0.72);
 }
 
 .icon-box-2 i {
@@ -1401,6 +1402,7 @@ Pricing Tables
     border: 1px solid #e5e5e5;
     text-align: center;
     position: relative;
+    box-shadow: 2px 2px 10px #c1c1c1;
 }
 .price-box h5 {
     font-weight: 600;
@@ -1454,7 +1456,7 @@ Pricing Tables
 
 .features-list {
     background: #fff;
-    padding: 40px;
+    padding: 10px 50px 10px 50px;
 }
 
 .features-list ul {
@@ -1485,7 +1487,7 @@ Pricing Tables
 
 .features-list .features-footer {
     color: #B3B3B3;
-    border-top: 1px solid #eaeaea;
+    /*border-top: 1px solid #eaeaea;*/
     font-family: 'Georgia', serif;
     font-style: italic;
     padding-top: 20px;
@@ -2688,4 +2690,8 @@ Margin Shortcodes
         float: none!important;
         text-align: center;
     }
+}
+
+.about{
+  position: absolute;
 }

@@ -11,12 +11,12 @@
 // about supported directives.
 //
 //= require jquery-3.0.0.min
-//= require turbolinks
 //= require bootstrap.min
 //= require modernizr.custom
 //= require prettify
 //= require classie
 //= require jquery.slicknav
 //= require slick.min
+//= require owl.carousel.min
 //= require all
 //= require_tree .

@@ -4,12 +4,11 @@
     <title>ProjectBx</title>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.4.3/sweetalert2.min.js'>   
+    <%= stylesheet_link_tag    'application', media: 'all'%>
+    <%= javascript_include_tag 'application' %>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.4.3/sweetalert2.min.js'>
     </script>
     <link href='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.4.3/sweetalert2.min.css' rel='stylesheet'>
-      
   </head>
 
   <body>
@@ -39,19 +38,16 @@
                         <ul id="menu" class="menu">
 
                             <!-- Menu Item -->
-           
+
 
                             <!-- Menu Item -->
-                            <li><a href="#" class="menu-item">Que es?</a>
-                            </li>
+                            <li><a href="/que_es" class="menu-item">Que es?</a></li>
 
                             <!-- Menu Item -->
-                            <li><a href="#" class="menu-item ">Como funciona?</a>
-
-                            </li>
+                            <li><a href="/como_funciona" class="menu-item ">Como funciona?</a></li>
 
                             <!-- Menu Item -->
-                            <li><a href="#" class="menu-item ">Testimonios</a>
+                            <li><a href="/testimonios" class="menu-item ">Testimonios</a>
                             </li>
 
                             <li>
@@ -71,11 +67,11 @@
                             <!-- Menu Item -->
 
                             <!-- Menu Item -->
-                            <li><a href="#" class="menu-item ">Contact</a>
+                            <li><a href="/contacto" class="menu-item ">Contact</a>
                             </li>
-                            
+
                             <% if user_signed_in? %>
-                            
+
                             <li> <%= link_to current_user.email.truncate(7), edit_user_registration_path, :class => 'menu-item' %> </li>
                                 <li> <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'button button-sm button-primary'  %>
                                 </li>
@@ -95,7 +91,7 @@
             </nav>
 
 
-            
+
              <% if notice %>
                 <script>
                     swal("<%= notice %>");
@@ -113,7 +109,7 @@
 
 
             <!-- call to action section -->
-            <div class="cta-1 bg-img bg-img-3 color-overlay pt80 pb80">
+            <div class="cta-1 bg-img bg-img-1 color-overlay pt80 pb80">
 
                 <div class="container">
 

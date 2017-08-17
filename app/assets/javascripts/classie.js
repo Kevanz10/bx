@@ -1,7 +1,7 @@
 /*!
  * classie - class helper functions
  * from bonzo https://github.com/ded/bonzo
- * 
+ *
  * classie.has( elem, 'my-class' ) -> true/false
  * classie.add( elem, 'my-new-class' )
  * classie.remove( elem, 'my-unwanted-class' )
@@ -15,6 +15,24 @@
 
 'use strict';
 
+$(document).ready(function(){
+  $(".owl-carousel").owlCarousel({
+    loop:true,
+    margin:10,
+    responsive:{
+        0:{
+            items:1
+        },
+        600:{
+            items:3
+        },
+        1000:{
+            items:3
+        }
+    }
+});
+
+});
 // class helper functions from bonzo https://github.com/ded/bonzo
 
 function classReg( className ) {
