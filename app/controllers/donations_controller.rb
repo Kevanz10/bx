@@ -21,7 +21,11 @@ class DonationsController < ApplicationController
   end
 
   # POST  Send donations
-  def sent_donation
+  def sent_donation (value)
+    
+    @donation = Donation.new(value: 30)
+    puts @donation
+=begin
     if (current_user.saldo > 0)
       #randon users
         #donation_receptors = User.offset(rand(User.count)).limit(3)
@@ -61,6 +65,7 @@ class DonationsController < ApplicationController
       flash[:notice] = 'saldo es insuficiente para realizar donación'
       redirect_to donations_root
     end
+=end
   end
 
   # POST /Donations
@@ -110,6 +115,6 @@ class DonationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def donation_params
-      params.require(:donation).permit(:sender_id, :recipient_id, :value, :user_id, :balance)
+      params.require(:donation).permit(:value, :user_id, :balance)
     end
 end

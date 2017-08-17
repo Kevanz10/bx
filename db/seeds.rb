@@ -7,9 +7,16 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-
 for i in 0..24
-  user = User.create(
+  user = User.new(
     email:"test#{i}@test.com", 
-    password: "password#{i}",)
+    password: "password#{i}",
+    saldo: rand(100..200))
+  user.skip_confirmation!
+  user.save
+  user.requests.create(value: rand(80..200))
 end
+
+
+
+

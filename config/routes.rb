@@ -15,7 +15,9 @@ Rails.application.routes.draw do
 
   resources :donations
 
+  #custom routes
   post '/enviar_donacion', to: 'donations#sent_donation', as: 'sent_donation'
+  post '/requerir_donacion', to: 'requests#request_donation', as: 'request_donation'
 
 
 end

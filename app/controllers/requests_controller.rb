@@ -22,7 +22,20 @@ class RequestsController < ApplicationController
 
   def request_donation
     if current_user.saldo > 0
-      @@send_donation = User.where()
+      debugger
+      @user = current_user.requests.create(requested: true,)
+      respond_to do |format|
+        if @user.update
+          format.html { redirect_to @request, notice: 'Donacion requerida.' }
+          format.json { render :show, status: :ok, location: @user }
+        else
+          format.html { render donation_path }
+          format.json { render json: @user.errors, status: :unprocessable_entity }
+        end
+      end
+    else
+      flash[:notice] = 'Saldo insuficiente.'
+      redirect_to donations_path
     end
   end
   
@@ -73,6 +86,6 @@ class RequestsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def request_params
-      params.require(:request).permit(:sender_id, :recipient_id, :value, :user_id, :balance)
+      params.require(:request).permit(:value, :user_id, :balance)
     end
 end
