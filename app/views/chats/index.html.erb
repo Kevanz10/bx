@@ -26,7 +26,6 @@
         <%= user.email %> 
         <%= link_to 'Message me!', chats_path(sender_id: current_user.id, recipient_id: user.id), method: :post%>
         <%= button_to 'Iniciar conversacion', chats_path(sender_id: current_user.id, recipient_id: user.id), :method=>:post, :remote => true%>
-
       </div>
       <% end %>
     <% end %>
