@@ -43,6 +43,8 @@ class RequestsController < ApplicationController
   # POST /Donations.json
   def create
     @request = Request.new(request_params)
+    #hacer que el valor pendiente del request sea el mismo valor de la solicitud al momento de su creacion
+    @request.pending = @request.value
     respond_to do |format|
       if @request.save
         format.html { redirect_to @request, notice: 'Request was successfully created.' }

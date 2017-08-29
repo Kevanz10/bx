@@ -20,7 +20,7 @@ class User < ApplicationRecord
     
     #Bloque de las ultimas solicitudes que aun no se han completado entre las cuales se va a repartir la donación
     block_size = 5
-    block = Request.where(status: "pending")
+    block = Request.where(requested: "waiting")
     block = block.order('created_at DESC').last(block_size)
 
     #valor a entregar por transacción
@@ -31,9 +31,9 @@ class User < ApplicationRecord
     #estado de cada request
     estado = [false,false,false,false,false]
     
-    donation_value = value #valor de la donacion ingresada  
+    donation_value = value.round() #valor de la donacion ingresada  
     
-    saldo = value  #saldo lo que va quedando de la donacion mientras se reparte originalmente es el valor completo
+    saldo = value.round()  #saldo lo que va quedando de la donacion mientras se reparte originalmente es el valor completo
     
     residuo = 0 #valor pendiente por entregar de la donación, campo pending de la donación
 
@@ -43,20 +43,21 @@ class User < ApplicationRecord
     
     block.each do |req|
       
-      request_values << req.value
+      request_values << req.pending
       
     end
     
     #pequeños valores entre los que se va a repartir la transacción
-    percentage = request_values.min*0.2
-
+    #percentage = (request_values.min*0.5).round()
+    percentage = 1
+    
       while (saldo > 0)  #mientras haya aun saldo por repartir
         
         if(saldo >= percentage) #si el saldo que haya disponible es mayor al porcentaje que se reparte
           
            transaction_values.each_with_index{ |val, i| #itero sobre el valor para cada transacción. 
            
-            # puts "i is #{i}"
+            puts "i is #{i}"
             #si el valor solocitado en la transacción  es mayor al valor que ya se ha dado mas el porcentaje
             if (saldo >= percentage && (request_values[i] >= (transaction_values[i] +  percentage)))
               
@@ -66,27 +67,34 @@ class User < ApplicationRecord
               #se disminuye el saldo
               saldo = saldo - percentage
               
-            #  p "El valor del request #{i}  es #{request_values[i]}"
-            #  p "La transferencia del request #{i}  tiene #{transaction_values[i]}"
+             p "El valor del request #{i}  es #{request_values[i]}"
+             p "La transferencia del request #{i}  tiene #{transaction_values[i]}"
               
             #de lo contrario si el valor solicitado ya es igual al valor de la transacción
             elsif (transaction_values[i] +  percentage > request_values[i] && request_values[i] >     transaction_values[i])
               
-              percentage = percentage * 0.5
-              
+              #percentage = percentage * 0.5
+              puts "percentage is #{percentage}"
+              if percentage>2
+                percentage = percentage - 1
+              else
+                percentage = 1
+              end
               #percentage = request_values[i] - transaction_values[i]
             end
              
             if(request_values[i] == transaction_values[i])
-             # p "Se completo la solicitud #{i}"
+              p "Se completo la solicitud #{i}"
               estado[i] = true 
+              block[i].requested = 1
+              block[i].save
             end
              
             }
               
             if (estado.all? {|x| x == true})
               # sacar todas las transacciones y renovar el bloque
-             # p "Se completaron todaaaas XXXXXXXXXXXX"
+              p "Se completaron todaaaas XXXXXXXXXXXX"
               residuo = saldo
               saldo = 0
             end
@@ -97,36 +105,65 @@ class User < ApplicationRecord
              
       end
 
+    #revision de todos los valores antes de crear transacciones
+=begin
       p "El saldo de la donación fue  #{donation_value}"
     
       p "distribucion es"
     
+
       request_values.each_with_index do |val, i|
+         p "El valor solicitado en el bloque #{i}  es #{block[i].value}"
          p "El valor solicitado del request #{i}  es #{request_values[i]}"
          p "La transferencia del request #{i}  tiene #{transaction_values[i]}"
       end
+
     
       p "residuo es #{residuo}"
-    
+
+=end
+      #Si no ha sobrado nada el estado de la donacion va a completo
       if residuo==0
         donation_state = 1
       end
     
       #posterior al calculo crear la donación y las transferencias. 
       
-      donation = self.donations.new(value: donation_value, pending: residuo, status: donation_state )
-    
-        if donation.save
+      donation = self.donations.new(value: donation_value, pending: residuo, status: donation_state)
 
-          donation
-          #transaction_values.each_with_index do |val, index|
-          # block
-          #transaction_values  
-          #end
+      if donation.save
+          #creo las transacciones
+          transaction_values.each_with_index do |val, i|
+            p "El valor solicitado del request #{i}  es #{request_values[i]}"
+            p "La transferencia del request #{i}  tiene #{transaction_values[i]}"
+            
+            transaction = donation.transactions.create(value: transaction_values[i], sender_id: donation.user_id, receiver_id: block[i].user_id, request_id: block[i].id)
+            
+            #Hacer los updates respectivos del request
+            #Update el valor que queda pendiente por pedir del request
+            block[i].pending = block[i].pending - transaction_values[i]
+            #si el  valor pendiente del request es igual a 0 
+            block[i].save
+            
+          end  
+      end
+
+      #revisar si todo esta en orden despues de que se creo cada transacción.
+      donation.transactions.each_with_index do |val, i|  
+         p "para request #{i}"
+         p "El usuario que solicito la transacction en el bloque #{i}  es #{block[i].user_id}"
+         p "El usuario que recibirá la transaccon #{i}  es #{donation.transactions[i].receiver_id}"
+        
+         p "El valor solicitado en el bloque #{i}  es #{block[i].value}"
+         p "El valor a consignar #{i}  es #{donation.transactions[i].value}" 
+         p "El valor pendiente por consignar en #{i}  es #{block[i].pending}" 
         
       end
-      
+    
+      puts "block status #{block}"
+      #check if requests are completed 
 
+    #method end
   end
 
 
