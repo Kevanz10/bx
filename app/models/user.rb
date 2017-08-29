@@ -37,6 +37,7 @@ class User < ApplicationRecord
     
     residuo = 0 #valor pendiente por entregar de la donación, campo pending de la donación
 
+    donation_state = 0
     #crear un array con los valores solicitados en cada request
     request_values = Array.new
     
@@ -48,19 +49,14 @@ class User < ApplicationRecord
     
     #pequeños valores entre los que se va a repartir la transacción
     percentage = request_values.min*0.2
-    
-    puts percentage
-    
-    puts request_values
+
       while (saldo > 0)  #mientras haya aun saldo por repartir
         
         if(saldo >= percentage) #si el saldo que haya disponible es mayor al porcentaje que se reparte
           
            transaction_values.each_with_index{ |val, i| #itero sobre el valor para cada transacción. 
            
-             puts "i is #{i}"
-             # if (saldo >= porcentaje && (pedi[k] >= repartir[k] + porcentaje))
-             
+            # puts "i is #{i}"
             #si el valor solocitado en la transacción  es mayor al valor que ya se ha dado mas el porcentaje
             if (saldo >= percentage && (request_values[i] >= (transaction_values[i] +  percentage)))
               
@@ -70,8 +66,8 @@ class User < ApplicationRecord
               #se disminuye el saldo
               saldo = saldo - percentage
               
-              p "El valor del request #{i}  es #{request_values[i]}"
-              p "La transferencia del request #{i}  tiene #{transaction_values[i]}"
+            #  p "El valor del request #{i}  es #{request_values[i]}"
+            #  p "La transferencia del request #{i}  tiene #{transaction_values[i]}"
               
             #de lo contrario si el valor solicitado ya es igual al valor de la transacción
             elsif (transaction_values[i] +  percentage > request_values[i] && request_values[i] >     transaction_values[i])
@@ -82,30 +78,54 @@ class User < ApplicationRecord
             end
              
             if(request_values[i] == transaction_values[i])
-              p "Se completo la solicitud #{i}"
+             # p "Se completo la solicitud #{i}"
               estado[i] = true 
             end
              
             }
               
             if (estado.all? {|x| x == true})
-              p "Se completaron todaaaas XXXXXXXXXXXX"
+              # sacar todas las transacciones y renovar el bloque
+             # p "Se completaron todaaaas XXXXXXXXXXXX"
               residuo = saldo
               saldo = 0
-              
             end
               
         else
-          debugger
           percentage = saldo/block_size
         end
              
       end
 
       p "El saldo de la donación fue  #{donation_value}"
-      p "distribucion es #{transaction_values}"
+    
+      p "distribucion es"
+    
+      request_values.each_with_index do |val, i|
+         p "El valor solicitado del request #{i}  es #{request_values[i]}"
+         p "La transferencia del request #{i}  tiene #{transaction_values[i]}"
+      end
+    
       p "residuo es #{residuo}"
-       
+    
+      if residuo==0
+        donation_state = 1
+      end
+    
+      #posterior al calculo crear la donación y las transferencias. 
+      
+      donation = self.donations.new(value: donation_value, pending: residuo, status: donation_state )
+    
+        if donation.save
+
+          donation
+          #transaction_values.each_with_index do |val, index|
+          # block
+          #transaction_values  
+          #end
+        
+      end
+      
 
   end
 
