@@ -42,9 +42,13 @@ class User < ApplicationRecord
     request_values = Array.new
     
     block.each do |req|
-      
-      request_values << req.pending
-      
+      #si estoy en el bloque mi valor solicitado es cero
+      if req.user_id != self.id
+        
+        request_values << req.pending 
+      else
+        request_values << 0 
+      end
     end
     
     #pequeños valores entre los que se va a repartir la transacción
@@ -105,23 +109,6 @@ class User < ApplicationRecord
              
       end
 
-    #revision de todos los valores antes de crear transacciones
-=begin
-      p "El saldo de la donación fue  #{donation_value}"
-    
-      p "distribucion es"
-    
-
-      request_values.each_with_index do |val, i|
-         p "El valor solicitado en el bloque #{i}  es #{block[i].value}"
-         p "El valor solicitado del request #{i}  es #{request_values[i]}"
-         p "La transferencia del request #{i}  tiene #{transaction_values[i]}"
-      end
-
-    
-      p "residuo es #{residuo}"
-
-=end
       #Si no ha sobrado nada el estado de la donacion va a completo
       if residuo==0
         donation_state = 1
@@ -136,14 +123,17 @@ class User < ApplicationRecord
           transaction_values.each_with_index do |val, i|
             p "El valor solicitado del request #{i}  es #{request_values[i]}"
             p "La transferencia del request #{i}  tiene #{transaction_values[i]}"
+          
+            #si la transacción es a mi mismo no se debe generar
+            if  block[i].user_id != self.id
+              transaction = donation.transactions.create(value: transaction_values[i], sender_id: donation.user_id, receiver_id: block[i].user_id, request_id: block[i].id)
             
-            transaction = donation.transactions.create(value: transaction_values[i], sender_id: donation.user_id, receiver_id: block[i].user_id, request_id: block[i].id)
-            
-            #Hacer los updates respectivos del request
-            #Update el valor que queda pendiente por pedir del request
-            block[i].pending = block[i].pending - transaction_values[i]
-            #si el  valor pendiente del request es igual a 0 
-            block[i].save
+              #Hacer los updates respectivos del request
+              #Update el valor que queda pendiente por pedir del request
+              block[i].pending = block[i].pending - transaction_values[i]
+              #si el  valor pendiente del request es igual a 0 
+              block[i].save
+            end
             
           end  
       end
@@ -153,11 +143,9 @@ class User < ApplicationRecord
          p "para request #{i}"
          p "El usuario que solicito la transacction en el bloque #{i}  es #{block[i].user_id}"
          p "El usuario que recibirá la transaccon #{i}  es #{donation.transactions[i].receiver_id}"
-        
          p "El valor solicitado en el bloque #{i}  es #{block[i].value}"
          p "El valor a consignar #{i}  es #{donation.transactions[i].value}" 
          p "El valor pendiente por consignar en #{i}  es #{block[i].pending}" 
-        
       end
     
       puts "block status #{block}"
