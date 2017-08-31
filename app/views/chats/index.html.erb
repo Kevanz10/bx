@@ -1,33 +1,85 @@
-<div class="ui segment">
-  <h3>Mailbox</h3>
-
-  <div class="ui list">
-    <div class="item">
-      <% @chats.each do |chat| %>
-        <% if chat.sender_id == current_user.id || chat.recipient_id == current_user.id %>
-          <% if chat.sender_id == current_user.id %>
-            <% recipient = User.find(chat.recipient_id) %>
-          <% else %>
-            <% recipient = User.find(chat.sender_id) %>
-          <% end %>
-          <%= link_to recipient.email, chat_messages_path(chat)%>
-        <% end %>
-      <% end %>
-    </div>
-  </div>
-</div>
-
-<div class="ui segment">
-  <h3>All Users</h3>
-  <div class="ui list">
-    <% @users.each do |user| %>
-      <% if user.id != current_user.id %>
-      <div class="item">
-        <%= user.email %> 
-        <%= link_to 'Message me!', chats_path(sender_id: current_user.id, recipient_id: user.id), method: :post%>
-        <%= button_to 'Iniciar conversacion', chats_path(sender_id: current_user.id, recipient_id: user.id), :method=>:post, :remote => true%>
+<div class="container">
+  <div class="ui-segment">
+    <h3><i class="fa fa-envelope-o mail-icon" aria-hidden="true"></i> Nuevos mensajes</h3>  
+    <div class="row">
+      <div class="col-md-8">
+        <div class="messages-recived">
+          <div class="row tables">
+            <div class="col-md-4">
+              <p class="text-center">
+                <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                Email del usuario
+              </p>
+            </div>
+            <div class="col-md-4">
+              <p class="text-center">
+                <i class="fa fa-envelope-open-o" aria-hidden="true"></i>
+                Ultimo mensaje
+              </p>
+            </div>
+            <div class="col-md-4">
+              <p class="text-center">
+                <i class="fa fa-clock-o" aria-hidden="true"></i>
+                Hora mensaje
+              </p>
+            </div>
+          </div>
+          <div class="row">
+            <% @chats.each do |chat| %>
+              <% if chat.sender_id == current_user.id || chat.recipient_id == current_user.id %>
+                <% if chat.sender_id == current_user.id %>
+                  <% recipient = User.find(chat.recipient_id) %>
+                <% else %>
+                  <% recipient = User.find(chat.sender_id) %>
+                <% end %>
+                <div class="col-md-4">
+                  <p class="text-center">
+                    <%= link_to recipient.email, chat_messages_path(chat)%>
+                  </p>
+                </div>
+                 <div class="col-md-4">
+                  <p class="text-center">
+                    <%= link_to chat.messages.last.body, chat_messages_path(chat)%>
+                  </p>
+                </div>
+                 <div class="col-md-4">
+                  <p class="text-center">
+                    <%= link_to chat.messages.last.message_time, chat_messages_path(chat)%>
+                  </p>
+                </div>
+                
+              <% end %>
+            <% end %>
+          </div>
+        </div>
       </div>
-      <% end %>
-    <% end %>
+      <div class="col-md-4">
+         <div class="ui segment">
+            <h3><i class="fa fa-user-secret" aria-hidden="true"></i> Usuarios disponibles</h3>
+            <br>
+            <div class="text-center">
+              <% @users.first(5).each do |user| %>
+                <% if user.id != current_user.id %>
+                <div class="item">
+                  <div class="row">
+                    <div class="col-md-6"> 
+                      <%= button_to chats_path(sender_id: current_user.id, recipient_id: user.id), class: 'chat-button' do %>
+                        <p class="iniciar-chat">
+                          <i class="fa fa-weixin" aria-hidden="true"></i>
+                           <%= user.email %> 
+                        </p>
+                      <%end%>
+                    </div>
+                  </div>
+                </div>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+      </div>
+    </div>  
   </div>
+ 
+  <br>
+  <br>
 </div>
