@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170825153257) do
+ActiveRecord::Schema.define(version: 20170829205516) do
 
   create_table "chats", force: :cascade do |t|
     t.integer  "sender_id"
@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 20170825153257) do
     t.decimal  "value"
     t.integer  "status",     default: 0
     t.decimal  "pending"
-    t.boolean  "requested"
+    t.integer  "requested",  default: 0
   end
 
   create_table "transactions", force: :cascade do |t|
@@ -56,7 +56,9 @@ ActiveRecord::Schema.define(version: 20170825153257) do
     t.boolean  "status",      default: false
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
+    t.integer  "request_id"
     t.index ["donation_id"], name: "index_transactions_on_donation_id"
+    t.index ["request_id"], name: "index_transactions_on_request_id"
   end
 
   create_table "transfers", force: :cascade do |t|

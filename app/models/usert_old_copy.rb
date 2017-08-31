@@ -4,8 +4,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :confirmable, 
          :recoverable, :rememberable, :trackable, :validatable, :lockable
 
-  has_many :chats, :foreign_key => :sender_id
-
   has_many :donations
   has_many :requests
   before_save :set_saldo_zero
@@ -17,8 +15,8 @@ class User < ApplicationRecord
   
   def send_donation (value)
   
-    
-#Configuración de variables para realizar donación.  
+    #valor ultimas solicitudes
+    # pedi = { "uno": 100, "dos": 100, "tres": 100 , "cuatro": 200 }
     
     #Bloque de las ultimas solicitudes que aun no se han completado entre las cuales se va a repartir la donación
     block_size = 5
@@ -53,54 +51,12 @@ class User < ApplicationRecord
       end
     end
     
-    donation = self.donations.new(value: donation_value, pending: residuo, status: donation_state)
-
     #pequeños valores entre los que se va a repartir la transacción
     #percentage = (request_values.min*0.5).round()
-    
-#Funcion para realizar el envio con las variables configuradas
-    
-   
-    valores_actualizados = create_transactions(block, donation, saldo, estado, donation_value, transaction_values, residuo, request_values)
-    
-    #actualizar valores 
-    
-    #revisar resultados del metodo mientras haya residuo y la cola se puede actualziar con transacciones pendientes volver a repartir
-
-    
-=begin
-    create_transactions
-
-      #revisar si todo esta en orden despues de que se creo cada transacción.
-      donation.transactions.each_with_index do |val, i|  
-         p "para request #{i}"
-         p "El usuario que solicito la transacction en el bloque #{i}  es #{block[i].user_id}"
-         p "El usuario que recibirá la transaccon #{i}  es #{donation.transactions[i].receiver_id}"
-         p "El valor solicitado en el bloque #{i}  es #{block[i].value}"
-         p "El valor a consignar #{i}  es #{donation.transactions[i].value}" 
-         p "El valor pendiente por consignar en #{i}  es #{block[i].pending}" 
-      end
-    
-      puts "block status #{block}"
-      #check if requests are completed 
-=end
-   
-    
-     
-    
-     #method end
-  end
-  
-  def create_transactions (block, donation, saldo, estado, donation_value, transaction_values, residuo, request_values)
-    
     percentage = 1
     
-    #calcular pocentaje
-    
-    while (saldo > 0)  #mientras haya aun saldo por repartir
+      while (saldo > 0)  #mientras haya aun saldo por repartir
         
-       percentage = 1
-      
         if(saldo >= percentage) #si el saldo que haya disponible es mayor al porcentaje que se reparte
           
            transaction_values.each_with_index{ |val, i| #itero sobre el valor para cada transacción. 
@@ -134,7 +90,6 @@ class User < ApplicationRecord
             if(request_values[i] == transaction_values[i])
               p "Se completo la solicitud #{i}"
               estado[i] = true 
-              #PASAR ESTO AL UPDATE DE TODOS LOS REQUEST
               block[i].requested = 1
               block[i].save
             end
@@ -161,41 +116,44 @@ class User < ApplicationRecord
     
       #posterior al calculo crear la donación y las transferencias. 
       
-      donation.update(pending: residuo, status: donation_state)
+      donation = self.donations.new(value: donation_value, pending: residuo, status: donation_state)
 
-      
-      #creo las transacciones
-      transaction_values.each_with_index do |val, i|
-        p "El valor solicitado del request #{i}  es #{request_values[i]}"
-        p "La transferencia del request #{i}  tiene #{transaction_values[i]}"
+      if donation.save
+          #creo las transacciones
+          transaction_values.each_with_index do |val, i|
+            p "El valor solicitado del request #{i}  es #{request_values[i]}"
+            p "La transferencia del request #{i}  tiene #{transaction_values[i]}"
+          
+            #si la transacción es a mi mismo no se debe generar
+            if  block[i].user_id != self.id
+              transaction = donation.transactions.create(value: transaction_values[i], sender_id: donation.user_id, receiver_id: block[i].user_id, request_id: block[i].id)
+            
+              #Hacer los updates respectivos del request
+              #Update el valor que queda pendiente por pedir del request
+              block[i].pending = block[i].pending - transaction_values[i]
+              #si el  valor pendiente del request es igual a 0 
+              block[i].save
+            end
+            
+          end  
+      end
 
-        #si la transacción es a mi mismo no se debe generar
-        if  block[i].user_id != self.id
-          transaction = donation.transactions.create(value: transaction_values[i], sender_id: donation.user_id, receiver_id: block[i].user_id, request_id: block[i].id)
-
-          #Hacer los updates respectivos del request
-          #Update el valor que queda pendiente por pedir del request
-          block[i].pending = block[i].pending - transaction_values[i]
-          #si el  valor pendiente del request es igual a 0 
-          block[i].save
-        end
-        
-        donation.transactions.each_with_index do |val, i|  
+      #revisar si todo esta en orden despues de que se creo cada transacción.
+      donation.transactions.each_with_index do |val, i|  
          p "para request #{i}"
          p "El usuario que solicito la transacction en el bloque #{i}  es #{block[i].user_id}"
          p "El usuario que recibirá la transaccon #{i}  es #{donation.transactions[i].receiver_id}"
          p "El valor solicitado en el bloque #{i}  es #{block[i].value}"
          p "El valor a consignar #{i}  es #{donation.transactions[i].value}" 
          p "El valor pendiente por consignar en #{i}  es #{block[i].pending}" 
-        end
-      
-        
-      #end del while  
-      end  
+      end
     
-      p "El residuo de la donación es  #{residuo}"
-      
+      puts "block status #{block}"
+      #check if requests are completed 
+
+    #method end
   end
+
 
 end
     
