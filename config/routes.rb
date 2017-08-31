@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get '/testimonios', to: 'static#testimonios'
   get '/contacto', to: 'static#contacto'
 
+
   devise_for :users, controllers: { registrations: 'registrations' }
 
   devise_scope :user do
@@ -14,6 +15,10 @@ Rails.application.routes.draw do
   end
 
   resources :donations
+
+  resources :chats do
+    resources :messages
+  end
 
   #custom routes
   post '/enviar_donacion', to: 'donations#sent_donation', as: 'sent_donation'

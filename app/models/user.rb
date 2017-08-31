@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :confirmable, 
          :recoverable, :rememberable, :trackable, :validatable, :lockable
 
+  has_many :chats, :foreign_key => :sender_id
+
   has_many :donations
   has_many :requests
   before_save :set_saldo_zero
