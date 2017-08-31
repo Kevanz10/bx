@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 20170825153257) do
     t.decimal  "value"
     t.integer  "status",     default: 0
     t.decimal  "pending"
-    t.boolean  "requested"
+    t.integer  "requested",  default: 0
   end
 
   create_table "transactions", force: :cascade do |t|
