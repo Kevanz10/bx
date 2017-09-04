@@ -19,6 +19,7 @@
   end
 =end
 
+
   User.first(10).each do |user|
     
     user.requests.create(value: rand(80..200))
