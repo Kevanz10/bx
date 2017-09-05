@@ -1,4 +1,5 @@
 class MessagesController < ApplicationController
+  
   before_action do
     @chat = Chat.find(params[:chat_id])
   end
@@ -29,7 +30,11 @@ class MessagesController < ApplicationController
   def create
     @message = @chat.messages.new(message_params)
     if @message.save
-      redirect_to chat_messages_path(@chat)
+      #passing broadcast messages_chanel
+      ActionCable.server.broadcast 'messages',
+        message: @message.body,
+        user: @message.user.email,
+        time: @message.created_at.strftime("%m/%d/%y  %H:%M:%S")
     end
   end
 

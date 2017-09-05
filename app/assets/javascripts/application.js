@@ -19,4 +19,5 @@
 //= require slick.min
 //= require owl.carousel.min
 //= require all
-//= require_tree .
+//= require chat-messages
+//= require_tree ./channels
