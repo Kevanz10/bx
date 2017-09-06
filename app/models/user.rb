@@ -42,9 +42,9 @@ class User < ApplicationRecord
     
     #revisar resultados del metodo mientras haya residuo y la cola se puede actualziar con transacciones pendientes volver a repartir
 
-   while((donation.pending > 0) && puede_dar(block))
+  while((donation.pending > 0) && puede_dar(block))
      
-   # if ((donation.pending > 0) && puede_dar(block))
+    # if ((donation.pending > 0) && puede_dar(block))
       
        
        #inicializar buffers para transacciones. 
@@ -66,6 +66,7 @@ class User < ApplicationRecord
           else
             request_values << 0 
           end
+
         end
     
        valores_actualizados = create_transactions(block, donation, saldo, estado, donation_value, transaction_values, residuo, request_values) 
@@ -74,7 +75,7 @@ class User < ApplicationRecord
        block = calcular_bloque(block_size)
       
       
-    end
+  end
    # end
   
    
@@ -109,7 +110,7 @@ class User < ApplicationRecord
              p "La transferencia del request #{i}  tiene #{transaction_values[i]}"
               
             #de lo contrario si el valor solicitado ya es igual al valor de la transacción
-            elsif (transaction_values[i] +  percentage > request_values[i] && request_values[i] >     transaction_values[i])
+            elsif (transaction_values[i] +  percentage > request_values[i] && request_values[i] >  transaction_values[i])
               
               #percentage = percentage * 0.5
               puts "percentage is #{percentage}"
@@ -180,7 +181,7 @@ class User < ApplicationRecord
       end  
     
     #revisar numero de transacciones y cambios de ids
-      donation.transactions.each_with_index do |val, i|  
+      donation.transactions.last(5).each_with_index do |val, i|  
          p "para request #{i}"
          p "El usuario que solicito la transacction en el bloque #{i}  es #{block[i].user_id}"
          p "El usuario que recibirá la transaccon #{i}  es #{donation.transactions[i].receiver_id}"
