@@ -22,7 +22,7 @@
 
 
 
-  User.first(20).each do |user|
+  User.first(3).each do |user|
     
     user.requests.create(value: rand(1..8))
     
