@@ -7,6 +7,10 @@ Rails.application.routes.draw do
   get '/testimonios', to: 'static#testimonios'
   get '/contacto', to: 'static#contacto'
 
+  get '/my_dashboard',  to: 'users#dashboard'
+
+  post '/send_donation',  to: 'users#donation_send'
+
   devise_for :users, controllers: { registrations: 'registrations' }
 
   devise_scope :user do
