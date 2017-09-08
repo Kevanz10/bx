@@ -84,6 +84,13 @@
                 <% end %>
               <% end %>
             </div>
+            <br>
+            <%= button_to chats_path(sender_id: current_user.id, recipient_id: @admin.ids.first), class: 'button button-primary button-sm' do %>
+              <p>
+                <i class="fa fa-plug" aria-hidden="true"></i>
+                Soporte técnico
+              </p>
+            <%end%>
           </div>
       </div>
     </div>  

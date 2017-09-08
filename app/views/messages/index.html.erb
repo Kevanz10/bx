@@ -28,14 +28,13 @@
       <% end %>
     </div>
   </div>
-
-  <%=form_for [@chat, @message] do |f|%>
+  <%=form_for [@chat, @message], html: { id: "message-form-chat", data: {admin: @admin, current_user_admin: @current_user_admin, messages_count: @messages_count }} do |f|%>
     <div class="field">
       <%= f.text_area :body, class: "form-control body-input", data: {textarea: "message"} %>
     </div>
       <%= f.text_field :user_id, value: current_user.id, type: "hidden"  %>
     <div class="text-center">
-      <%= f.button :submit, class: "ui blue labeled submit icon button responder text-center", data: {send: "message"} do %>
+      <%= f.button :submit, class: "ui blue labeled submit icon button responder text-center enviar-chat", data: {send: "message"} do %>
         <p>Enviar mensaje
           <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
         </p>
@@ -43,5 +42,4 @@
     </div>
   <% end %>
 </div>
-<br>
 <br>

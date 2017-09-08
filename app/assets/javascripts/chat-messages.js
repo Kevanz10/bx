@@ -1,4 +1,3 @@
-
 jQuery(document).ready(function($) {
 	$('.new_message').submit(function(e) {
 	  e.preventDefault();
