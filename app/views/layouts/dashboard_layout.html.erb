@@ -1,0 +1,101 @@
+  <!DOCTYPE html>
+  <html>
+  <head>
+    <title>ProjectBx</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all'%>
+    <%= javascript_include_tag 'application' %>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.4.3/sweetalert2.min.js'>
+    </script>
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.4.3/sweetalert2.min.css' rel='stylesheet'>
+    <link href="https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+        <% if notice %>
+            <script>
+                swal("<%= notice %>");
+            </script>
+        <% end %>
+
+        <% if alert%>
+            <script>
+                swal("<%= alert %>");
+            </script>
+        <% end %>
+
+
+
+        <div class="dashboard-wrapper">
+
+      <!--SideBar-->
+  		<div class="sidebar">
+
+  			<div class="sidebar-wrapper">
+  				<div class="">
+                    <a href="/" class="logo" style="border-bottom: 1px solid #fff;">
+                        <i class="pe-7s-cash"></i>
+                        <p>Donating Goals</p>
+                    </a>      
+                </div>
+
+                <ul class="nav own-nav">
+                        
+                    <li>
+                        <a href="/my_dashboard">
+                            <i class="fa fa-home" aria-hidden="true"></i>
+                            <p>Workspace</p>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/my_portfolios">
+                            <i class="fa fa-folder-o" aria-hidden="true"></i>
+                            <p>Account Balance </p>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-users" aria-hidden="true"></i>
+                            <p>Referrals</p>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/recommended_properties">
+                           
+                            <i class="fa fa-newspaper-o" aria-hidden="true"></i>
+                            <p>News Info</p>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/dashboard_education">
+                            <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                        <p>Support</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/users/edit">   
+                            <i class="fa fa-cogs" aria-hidden="true"></i>
+                            <p>Account settings</p>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+      <!--SideBar-->
+
+      <div class="main-panel">
+            <%= yield %>
+      </div>
+
+    </div>
+    
+  </body>
+  </html>

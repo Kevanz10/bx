@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
+
 =begin
   for i in 0..24
     user = User.new(
@@ -19,11 +20,12 @@
   end
 =end
 
-  User.first(10).each do |user|
+
+
+  User.first(3).each do |user|
     
-    user.requests.create(value: rand(80..200))
+    user.requests.create(value: rand(1..8))
     
   end
-
 
 

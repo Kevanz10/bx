@@ -1,0 +1,150 @@
+  <nav class="own-navbar">
+    <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#" style="font-size: 18px;color: #606060;line-height: 20px;">WORKSPACE</a>
+        </div>
+      </div>
+  </nav>
+
+
+  <div class="blog-area bg-light blog-page"> 
+    <div class="col-md-12">
+      <div class="pt-20 text-center">
+       
+
+        <div class="col-md-6 donations-container" > 
+          <h1>Send donation</h1>
+
+          <div class ="send-donation-form"> 
+          
+            <%= form_tag("/send_donation", method: "post") do %>
+              <%= label_tag(:value, "Search for:") %>
+              <%= text_field_tag(:value) %>
+             
+              <%= submit_tag("Send donation", class: "btn btn-primary btn-primary") %>
+
+            <% end %>
+          </div>
+
+        <div>
+
+        </div class ="donations-list">
+
+          <div class="">
+            <div class="well span8 offset2">
+                    <div class="row-fluid user-row">
+                        
+                        <div class="span10">
+                            <strong>Donation Code, value</strong><br>
+                            <span class="text-muted">Value: 666</span>
+                        </div>
+                        <div class="span1 dropdown-user" data-for=".myUsername">
+                            <i class="icon-chevron-down text-muted"></i>
+                        </div>
+                    </div>
+                    <div class="row-fluid user-infos myUsername">
+                        <div class="span10 offset1">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Donation information</h3>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="row-fluid">
+                                        
+                                        <div class="span6">
+                                            <table class="table table-condensed table-responsive table-user-information">
+                                                <tbody>
+                                                <tr>
+                                                    <td>Value:</td>
+                                                    <td>2323</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Date:</td>
+                                                    <td>11/12/2013</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Status</td>
+                                                    <td>Pending</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Pending for request</td>
+                                                    <td>19923</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Completed transactions</td>
+                                                    <td>3</td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="transactions-container">
+                                  <div class="panel-transactions panel-secondary">
+                                    <div class="panel-heading">
+                                      <h3 class="panel-title">Donation transactions</h3>
+                                    </div>
+                                      <div class="transactions-container col-md-10 col-md-offset-1">
+                                        <div class="panel-transactions panel-secondary">
+                                          <div class="panel-heading">
+                                            <h3 class="panel-title">Transaction one</h3>
+                                          </div>
+                                            <p>dsdasdasdas</p>
+                                            <p>dsdasdasdas</p>
+                                        </div>
+                                        <div class="panel-transactions panel-secondary">
+                                          <div class="panel-heading">
+                                            <h3 class="panel-title">Transaction one</h3>
+                                          </div>
+                                            <p>dsdasdasdas</p>
+                                            <p>dsdasdasdas</p>
+                                        </div>
+                                        <div class="panel-transactions panel-secondary">
+                                          <div class="panel-heading">
+                                            <h3 class="panel-title">Transaction one</h3>
+                                          </div>
+                                            <p>dsdasdasdas</p>
+                                            <p>dsdasdasdas</p>
+                                        </div>
+                                      </div>
+                                  </div>
+                                </div>
+
+
+                                <div class="panel-footer">
+                                    <button class="btn btn-primary" type="button"
+                                            data-toggle="tooltip"
+                                            data-original-title="Send message to user"><i class="icon-envelope icon-white"></i></button>
+                                    <span class="pull-right">
+                                        <button class="btn btn-warning" type="button"
+                                                data-toggle="tooltip"
+                                                data-original-title="Edit this user"><i class="icon-edit icon-white"></i></button>
+                                        <button class="btn btn-danger" type="button"
+                                                data-toggle="tooltip"
+                                                data-original-title="Remove this user"><i class="icon-remove icon-white"></i></button>
+                                    </span>
+                                </div>
+
+
+                            </div>
+                        </div>
+                  </div>
+          </div>
+        </div>
+
+          <% @donations.each do |don| %>
+            <div class ="donation-box">
+
+            </div>
+          <% end %> 
+       </div>
+
+       <div class="col-md-6 donations-container"> 
+         <h1>Request donation</h1>
+       </div>
+
+      </div>       
+    </div>    
+  </div>
+
