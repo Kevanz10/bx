@@ -117,7 +117,12 @@
 }   
 
 .panel-secondary > .panel-heading {
-    background-color: #CA4244;
-    border-color: #CA4244;
+    background-color: #114830;
+    border-color: #114830;
     color: #FFFFFF;
 } 
+
+.buttons-container{
+
+    margin-bottom: 12px;
+}
