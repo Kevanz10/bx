@@ -7,12 +7,9 @@ Rails.application.routes.draw do
   get '/testimonios', to: 'static#testimonios'
   get '/contacto', to: 'static#contacto'
 
-<<<<<<< HEAD
-=======
   get '/my_dashboard',  to: 'users#dashboard'
 
   post '/send_donation',  to: 'users#donation_send'
->>>>>>> send
 
   devise_for :users, controllers: { registrations: 'registrations' }
 
@@ -28,6 +25,7 @@ Rails.application.routes.draw do
 
   #custom routes
   post '/enviar_donacion', to: 'donations#sent_donation', as: 'sent_donation'
+  
   post '/requerir_donacion', to: 'requests#request_donation', as: 'request_donation'
 
 
