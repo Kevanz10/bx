@@ -31,7 +31,7 @@
         </div class ="donations-list">
 
           <div class="">
-            <div class="well span8 offset2">
+                <div class="well span8 offset2">
                     <div class="row-fluid user-row">
                         
                         <div class="span10">
@@ -90,72 +90,58 @@
                                           <div class="panel-heading">
                                             <h3 class="panel-title">Transaction one</h3>
                                           </div>
-                                            <table class="table table-condensed table-responsive table-user-information">
-                                                <tbody>
-                                                <tr>
-                                                    <td>Value:</td>
-                                                    <td>2323</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Time remaining:</td>
-                                                    <td>23 Hours</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Status</td>
-                                                    <td>Pending</td>
-                                                </tr>
+                                          <table class="table table-condensed table-responsive table-user-information">
+                                              <tbody>
+                                              <tr>
+                                                  <td>Value:</td>
+                                                  <td>2323</td>
+                                              </tr>
+                                              <tr>
+                                                  <td>Time remaining:</td>
+                                                  <td>23 Hours</td>
+                                              </tr>
+                                              <tr>
+                                                  <td>Status</td>
+                                                  <td>Pending</td>
+                                              </tr>
 
+                                              <tr>
+                                                  <td>Completed transactions</td>
+                                                  <td>3</td>
+                                              </tr>
                                                 <tr>
-                                                    <td>Completed transactions</td>
-                                                    <td>3</td>
+                                                  <td>Missing transactions</td>
+                                                  <td>3</td>
                                                 </tr>
-                                                 <tr>
-                                                    <td>Missing transactions</td>
-                                                    <td>3</td>
-                                                  </tr>
-                                                </tbody>
-                                            </table>
+                                              </tbody>
+                                          </table>
 
-                                            <div class="buttons-container"> 
-                                              <button class="btn btn-primary" type="button"
-                                              data-toggle="tooltip"
-                                              data-original-title="Send message to user">
-                                              <i class="icon-envelope icon-white"></i>
-                                              </button>
-                                              <div>
-                                              </div class="dropdown">>
-                                              <button class="btn btn-warning" type="button"
-                                                      data-toggle="tooltip"
-                                                      data-original-title="Check user details">
-                                                      <i class="icon-edit icon-white"></i>
-                                              </button>
+                                            <div class="buttons-container col-md-12"> 
+                                              <div class="col-md-6">
+                                                <button class="btn btn-primary" type="button">
+                                                  Message
+                                                  <i class="icon-envelope icon-white"></i>
+                                                  </button>
+                                              </div>
+                                              <div class="col-md-6">
+                                                </div class="dropdown">
+                                                    <button class="btn btn-warning dropdown-toggle" type="button"
+                                                      data-toggle="dropdown">
+                                                      Receiver info <i class="icon-edit icon-white"></i>
+                                                    </button>
+                                                </div>
+                                              </div>
                                             </div>
-                                            
-                                            
-                                             
-                                             
-                                         
-                                            
-                                            
+
+                                            <p>sdasdjalskdjaklsjlk</p>
                                         </div>
                                       </div>
                                   </div>
                                 </div>
-
-
-                                <div class="">
-                                    <button class="btn btn-primary" type="button"
-                                            data-toggle="tooltip"
-                                            data-original-title="Send message to user"><i class="icon-envelope icon-white"></i></button>
-                                    
-                                </div>
-
-
                             </div>
                         </div>
-                  </div>
-          </div>
-        </div>
+                    </div>
+                </div>
 
           <% @donations.each do |don| %>
             <div class ="donation-box">
