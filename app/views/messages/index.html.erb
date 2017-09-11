@@ -2,13 +2,14 @@
   <br>
   <br>
   <h4 class="text-center">
-    Conversacion
-    <%=@chat.sender.email.capitalize!%>
-    /
-    <%=@chat.recipient.email.capitalize!%>
+    <%if current_user.email == @chat.sender.email%>
+      <i class="fa fa-user-o" aria-hidden="true"></i> <%=@chat.recipient.email.capitalize%> 
+    <%else%>
+      <i class="fa fa-user-o" aria-hidden="true"></i> <%=@chat.sender.email.capitalize%>
+    <%end%>
   </h4>
   <br>
-  <div class="row">
+  <div class="row" id="messages">
     <div class="ui segment">
       <% @messages.each do |message| %>
         <% if message.body %>
@@ -18,7 +19,6 @@
               <div class="header"><strong><%= user.email %></strong> <%= message.message_time %></div>
               <div class="list">
                 <div class="item">
-                  <i class="right triangle icon"></i>
                   <%= message.body %>
                 </div>
               </div>
@@ -28,20 +28,18 @@
       <% end %>
     </div>
   </div>
-
-  <%= form_for [@chat, @message], html: {class: "ui reply form"} do |f| %>
+  <%=form_for [@chat, @message], html: { id: "message-form-chat", data: {admin: @admin, current_user_admin: @current_user_admin, messages_count: @messages_count }} do |f|%>
     <div class="field">
-      <%= f.text_area :body, class: "form-control" %>
+      <%= f.text_area :body, class: "form-control body-input", data: {textarea: "message"} %>
     </div>
       <%= f.text_field :user_id, value: current_user.id, type: "hidden"  %>
     <div class="text-center">
-      <%= f.button :submit, class: "ui blue labeled submit icon button responder text-center" do %>
-        <p>Responder
+      <%= f.button :submit, class: "ui blue labeled submit icon button responder text-center enviar-chat", data: {send: "message"} do %>
+        <p>Enviar mensaje
           <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
         </p>
       <% end %>
     </div>
   <% end %>
 </div>
-<br>
 <br>

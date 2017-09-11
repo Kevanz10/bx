@@ -26,29 +26,38 @@
           </div>
           <div class="row">
             <% @chats.each do |chat| %>
-              <% if chat.sender_id == current_user.id || chat.recipient_id == current_user.id %>
-                <% if chat.sender_id == current_user.id %>
-                  <% recipient = User.find(chat.recipient_id) %>
-                <% else %>
-                  <% recipient = User.find(chat.sender_id) %>
+              <%unless chat.messages.empty?%>
+                <% if chat.sender_id == current_user.id || chat.recipient_id == current_user.id %>
+                  <% if chat.sender_id == current_user.id %>
+                    <% recipient = User.find(chat.recipient_id) %>
+                  <% else %>
+                    <% recipient = User.find(chat.sender_id) %>
+                  <% end %>
+                  <div class="col-md-4">
+                    <p class="text-center">
+                      <%= link_to recipient.email, chat_messages_path(chat)%>
+                    </p>
+                  </div>
+                   <div class="col-md-4">
+                    <p class="text-center">
+                      <%if !chat.messages.empty?%>
+                        <%= link_to chat.messages.last.body, chat_messages_path(chat)%>
+                      <%else%>
+                        No tienes mensajes
+                      <%end%>
+                    </p>
+                  </div>
+                   <div class="col-md-4">
+                    <p class="text-center">
+                      <%if !chat.messages.empty?%>
+                        <%= link_to chat.messages.last.created_at.strftime("%m/%d/%y  %H:%M:%S"), chat_messages_path(chat)%>
+                       <%else%>
+                        No tienes mensajes
+                      <%end%>
+                    </p>
+                  </div>
                 <% end %>
-                <div class="col-md-4">
-                  <p class="text-center">
-                    <%= link_to recipient.email, chat_messages_path(chat)%>
-                  </p>
-                </div>
-                 <div class="col-md-4">
-                  <p class="text-center">
-                    <%= link_to chat.messages.last.body, chat_messages_path(chat)%>
-                  </p>
-                </div>
-                 <div class="col-md-4">
-                  <p class="text-center">
-                    <%= link_to chat.messages.last.message_time, chat_messages_path(chat)%>
-                  </p>
-                </div>
-                
-              <% end %>
+              <%end%>
             <% end %>
           </div>
         </div>
@@ -75,6 +84,13 @@
                 <% end %>
               <% end %>
             </div>
+            <br>
+            <%= button_to chats_path(sender_id: current_user.id, recipient_id: @admin.ids.first), class: 'button button-primary button-sm' do %>
+              <p>
+                <i class="fa fa-plug" aria-hidden="true"></i>
+                Soporte técnico
+              </p>
+            <%end%>
           </div>
       </div>
     </div>  
