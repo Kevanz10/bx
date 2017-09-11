@@ -1,4 +1,4 @@
-<div class="transactions-container">
+
     <div class="panel-transactions panel-secondary">
         <div class="panel-heading">
         <h3 class="panel-title">Donation transactions</h3>
@@ -7,35 +7,36 @@
         <div class="transactions-container col-md-10 col-md-offset-1">
             <div class="panel-transactions panel-secondary">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Transaction one</h3>
+                    <h3 class="panel-title">Transaction <%= transaction.id %></h3>
                 </div>
                 <table class="table table-condensed table-responsive table-user-information">
                     <tbody>
                     <tr>
                         <td>Value:</td>
-                        <td>2323</td>
+                        <td><%= transaction.value %></td>
                     </tr>
                     <tr>
                         <td>Time remaining:</td>
                         <td>23 Hours</td>
                     </tr>
                     <tr>
-                        <td>Status</td>
-                        <td>Pending</td>
+                        <td>Status:</td>
+                        <% if transaction.status%>
+                            <td>Completed</td>
+                        <% else  %>
+                            <td>Pending </td>
+                        <% end%>
                     </tr>
 
                     <tr>
-                        <td>Receiver name</td>
-                        <td>xxxxxxxx</td>
+                        <td>Receiver name:</td>
+                        <td><%= User.find(transaction.receiver_id).email %></td>
                     </tr>
                     <tr>
                         <td>Receiver wallet</td>
-                        <td>vdda34134</td>
+                        <td><%= User.find(transaction.receiver_id).btc %></td>
                     </tr>
-                    <tr>
-                        <td>Receiver email</td>
-                        <td>sdasd@gmail.com</td>
-                    </tr>
+                   
                     </tbody>
                 </table>
                 <div class="buttons-container col-md-12"> 
@@ -49,7 +50,7 @@
                     <div class="">
                         <button class="btn btn-warning dropdown-toggle" type="button"
                         data-toggle="dropdown">
-                        Check receipt <i class="icon-edit icon-white"></i>
+                        Upload receipt <i class="icon-edit icon-white"></i>
                         </button>
                        
                     </div>
@@ -60,4 +61,3 @@
         </div>
 
     </div>
-</div>

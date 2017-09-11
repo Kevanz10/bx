@@ -3,7 +3,6 @@ class UsersController < ApplicationController
     before_action :authenticate_user!
 
     def dashboard
-        
         @donations = current_user.donations
         render layout: "dashboard_layout"
     end

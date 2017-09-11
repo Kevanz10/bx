@@ -20,10 +20,12 @@
                     <%= submit_tag("Send donation", class: "btn btn-primary btn-primary") %>
                     <% end %>
                 </div>
-                <%=   render :partial => 'donation_list'%>
-               
+                <% @donations.each do |donation| %>
+                    <div class ="donations-list" style="border: solid 1px; margin: 15px;">
+                        <%=   render :partial => 'donation_list', locals: {donation: donation}%>
+                    </div>
+                <% end %>
             </div>
-
             <div class="col-md-6 donations-container"> 
                 <h1>Request donation</h1>
             </div>

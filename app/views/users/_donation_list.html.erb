@@ -3,8 +3,9 @@
 
                 <div class="row-fluid user-row">
                     <div class="span10">
-                        <strong>Donation Code, value</strong><br>
-                        <span class="text-muted">Value: 666</span>
+                        <strong>Code: DG<%= donation.id %></strong><br>
+                         <strong>Value: <%= donation.value %></strong>
+                       
                     </div>
                     <div class="span1 dropdown-user" data-for=".myUsername">
                         <i class="icon-chevron-down text-muted"></i>
@@ -22,33 +23,46 @@
                                         <tbody>
                                         <tr>
                                             <td>Value:</td>
-                                            <td>2323</td>
+                                            <td><%= donation.value %></td>
                                         </tr>
                                         <tr>
                                             <td>Date:</td>
-                                            <td>11/12/2013</td>
+                                            <td><%= donation.created_at.to_date %></td>
                                         </tr>
                                         <tr>
-                                            <td>Status</td>
-                                            <td>Pending</td>
+                                            <td>Status:</td>
+                                            <% if donation.completed %>
+                                                <td>Completed</td>
+                                            <% elsif donation.status == "pending"  %>
+                                                <td>Pending for requests</td>
+                                            <% else donation.status == "completed"  %>
+                                                <td>Pending for transactions completion</td>
+                                            <% end %>
                                         </tr>
                                         <tr>
-                                            <td>Pending for request</td>
-                                            <td>19923</td>
+                                            <td>Value pending to be requested</td>
+                                            <td><%= donation.pending %></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Total transactions</td>
+                                            <td><%= donation.transactions.count %></td>
                                         </tr>
                                         <tr>
                                             <td>Completed transactions</td>
-                                            <td>3</td>
+                                            <td><%= donation.transactions.where(status: true).count %></td>
                                         </tr>
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
                         </div>
+                        <% donation.transactions.each do |transaction| %>
+                            <div class="transactions-container">
+                                <%=   render :partial => 'transactions_container', locals: {transaction: transaction}%>
+                            </div> 
+                        <% end %>
                         
-                        <%=   render :partial => 'transactions_container'%>
-
-                       
+                       <p>whateeeveeeer</p>
                     </div> 
                 </div>
             </div>
