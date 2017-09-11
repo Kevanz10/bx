@@ -15,6 +15,10 @@ Rails.application.routes.draw do
 
   post '/send_donation',  to: 'users#donation_send'
 
+  post '/request_donation', to: 'users#donation_request'
+
+  post '/add_invoice', to: 'transactions#add_invoice'
+
   devise_for :users, controllers: { registrations: 'registrations' }
 
   devise_scope :user do
@@ -27,10 +31,7 @@ Rails.application.routes.draw do
     resources :messages
   end
 
-  #custom routes
-  post '/enviar_donacion', to: 'donations#sent_donation', as: 'sent_donation'
-  
-  post '/requerir_donacion', to: 'requests#request_donation', as: 'request_donation'
+
 
 
 end

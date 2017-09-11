@@ -26,38 +26,46 @@
                 <td>Sender name:</td>
                 <td><%= User.find(transaction.sender_id).name %></td>
             </tr>
+
             <tr>
                 <td>Sender phone:</td>
                 <td><%= User.find(transaction.sender_id).phone %></td>
             </tr>
 
             <tr>
-                <td>Receiver email:</td>
-                <td><%= User.find(transaction.receiver_id).email %></td>
+                <td>Sender email:</td>
+                <td><%= User.find(transaction.sender_id).email %></td>
             </tr>
             <tr>
-                <td>Receiver wallet</td>
-                <td><%= User.find(transaction.receiver_id).btc %></td>
+                <td>Sender wallet</td>
+                <td><%= User.find(transaction.sender_id).btc %></td>
             </tr>
             
             </tbody>
         </table>
         <div class="buttons-container col-md-12"> 
-        <div class="col-md-12">
+        <div class="col-md-6">
             <button class="btn btn-primary" type="button">
-            Message
+            Message User
             <i class="icon-envelope icon-white"></i>
             </button>
         </div>
-        <div class="col-md-12">
+        <div class="col-md-6">
             <div class="">
-                <div class ="request-donation-form"> 
-                    <%= form_tag("/add_invoice", method: "post") do %>
-                    <%= file_field_tag :invoice %>
-                    <%= hidden_field_tag :transaction_id, transaction.id %>
-                    <%= submit_tag("Upload screenshot", class: "btn btn-warning") %>
-                    <% end %>
-                </div>
+                <button class="btn btn-warning dropdown-toggle btn-success" type="button"
+                data-toggle="dropdown">
+                Check receipt <i class="icon-edit icon-white"></i>
+                </button>
+                
+            </div>
+        </div>
+         <div class="col-md-8 col-md-offset-2" style="margin-top:15px;">
+            <div class="">
+                <button class="btn btn-info dropdown-toggle" type="button"
+                data-toggle="dropdown">
+                Confirm transaction <i class="icon-check icon-white"></i>
+                </button>
+                
             </div>
         </div>
         </div> 
