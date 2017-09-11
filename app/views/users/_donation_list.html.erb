@@ -7,11 +7,11 @@
                          <strong>Value: <%= donation.value %></strong>
                        
                     </div>
-                    <div class="span1 dropdown-user" data-for=".myUsername">
+                    <div class="span1 dropdown-user" data-for=".<%= donation.id%>">
                         <i class="icon-chevron-down text-muted"></i>
                     </div>
                 </div>
-                <div class="row-fluid user-infos myUsername">
+                <div class="row-fluid user-infos <%= donation.id%>">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
                             <h3 class="panel-title">Donation information</h3>
@@ -56,12 +56,16 @@
                                 </div>
                             </div>
                         </div>
-                        <% donation.transactions.each do |transaction| %>
-                            <div class="transactions-container">
-                                <%=   render :partial => 'transactions_container', locals: {transaction: transaction}%>
-                            </div> 
-                        <% end %>
-                        
+                        <div class="transactions-container">
+                            <div class="panel-transactions panel-secondary">
+                                <div class="">
+                                    <h3 class="panel-title">Donation transactions</h3>
+                                     <% donation.transactions.each do |transaction| %>
+                                        <%=   render :partial => 'transactions_container', locals: {transaction: transaction}%>
+                                     <% end %>
+                                </div>
+                            </div>
+                        </div>  
                        <p>whateeeveeeer</p>
                     </div> 
                 </div>
