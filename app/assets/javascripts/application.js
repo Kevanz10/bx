@@ -20,4 +20,5 @@
 //= require owl.carousel.min
 //= require all
 //= require chat-messages
-//= require_tree ./channels
+//= require_tree .
+

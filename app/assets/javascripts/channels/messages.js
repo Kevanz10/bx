@@ -5,7 +5,6 @@ App.messages = App.cable.subscriptions.create('MessagesChannel', {
   },
 
   renderMessage: function(data) {
-  	debugger;
   	if (data.text!==undefined) {
   		swal('Recuerde que solo puede enviar un mensaje hasta que el equipo de soporte se comunique con usted.');
   	}else{
@@ -13,17 +12,3 @@ App.messages = App.cable.subscriptions.create('MessagesChannel', {
   	}
   }
 });
-
-// if (data.admin === true) {
-// 			if (data.current_user_admin === false) {
-// 				debugger;
-// 				if (data.count === 0) {
-// 	      	$('.enviar-chat').prop('disabled', false);
-// 	      } else if(data.count == 1){
-// 	      	swal('Recuerde que solo puede enviar un mensaje hasta que el equipo de soporte se comunique con usted.');
-// 	         $('.enviar-chat').prop('disabled', true);
-// 	      }	else{
-// 	      	$('.enviar-chat').prop('disabled', false);
-// 	      }
-// 			}
-// 		}
