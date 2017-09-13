@@ -19,6 +19,8 @@ Rails.application.routes.draw do
 
   post '/add_invoice', to: 'transactions#add_invoice'
 
+  get '/confirm_transaction', to: 'transactions#confirm_transaction', as: 'transaction_confirm'
+
   devise_for :users, controllers: { registrations: 'registrations' }
 
   devise_scope :user do

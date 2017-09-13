@@ -34,11 +34,8 @@
     </div>
       <%= f.text_field :user_id, value: current_user.id, type: "hidden"  %>
     <div class="text-center">
-      <%= f.button :submit, class: "ui blue labeled submit icon button responder text-center enviar-chat", data: {send: "message"} do %>
-        <p>Enviar mensaje
-          <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
-        </p>
-      <% end %>
+      <%= f.button :submit, class: "ui blue labeled submit icon button responder text-center enviar-chat", data: {send: "message"} %>
+   
     </div>
   <% end %>
 </div>

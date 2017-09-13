@@ -45,32 +45,64 @@
         </table>
         <div class="buttons-container col-md-12"> 
         <div class="col-md-6">
-            <button class="btn btn-primary" type="button">
-            Message User
-            <i class="icon-envelope icon-white"></i>
-            </button>
+            <%= button_to chats_path(sender_id: current_user.id, recipient_id: transaction.sender_id), class: 'btn btn-primary' do %>
+                <i class="fa fa-weixin" aria-hidden="true"></i>
+                Message 
+            <%end%>
         </div>
         <div class="col-md-6">
             <div class="">
-                <button class="btn btn-warning dropdown-toggle btn-success" type="button"
-                data-toggle="dropdown">
-                Check receipt <i class="icon-edit icon-white"></i>
-                </button>
+
+                 <% if transaction.invoice.url %>
+                    <div class="col-md-12">
+                        <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#img<%=transaction.id%>">Check invoice</button>
+                    </div>
+                <% else %>
+                    <div class="col-md-12">
+                        <span>Invoice not sent yet</span>
+                    </div>
+                <% end  %>
                 
             </div>
         </div>
          <div class="col-md-8 col-md-offset-2" style="margin-top:15px;">
             <div class="">
-                <button class="btn btn-info dropdown-toggle" type="button"
-                data-toggle="dropdown">
-                Confirm transaction <i class="icon-check icon-white"></i>
-                </button>
+            <% if transaction.status %>
+                <h3>Transaction already confirmed</h3>
+            <%else%>
+                <!--<%= form_tag("/confirm_transaction", method: "post") do %> 
+                <%= hidden_field_tag :transaction_id, transaction.id %>
+                <%= submit_tag("Confirm transaction", class: "btn btn-info") %>
+               
+                <%end%>
+                 -->  
+    
+                <%= link_to "Confirm transaction", transaction_confirm_path(transaction_id: transaction.id), method: :get,  data: { confirm: 'Are you sure?' } %>
                 
+            <%end%>
+            
             </div>
         </div>
         </div> 
         <p>sdasdjalskdjaklsjlk</p>
     </div>
 </div>
+
+
+<% if transaction.invoice.url.present? %>
+    <div id="img<%=transaction.id%>" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Upload Screenshot</h4>
+                </div>
+                <div class ="request-donation-form">
+                    <%= image_tag(transaction.invoice.url)%>
+                </div>
+            </div>
+        </div>
+    </div>
+<%end%>
 
    

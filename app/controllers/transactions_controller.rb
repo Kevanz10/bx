@@ -4,8 +4,19 @@ class TransactionsController < ApplicationController
         @transaction = Transaction.find(params[:transaction_id])
         @transaction.invoice = params[:invoice]
         @transaction.save!
-        raise
         redirect_to '/my_dashboard', notice: "image succesfully saved"
+    end
+
+    def confirm_transaction
+        @transaction = Transaction.find(params[:transaction_id])
+        
+        if @transaction.receiver_id == current_user.id
+            @transaction.update(status: true)
+            redirect_to '/my_dashboard', notice: "transaction sucesfully confirmed"
+        else
+            redirect_to '/my_dashboard', notice: "you don't have permission to acces this transaction"
+        end
+       
     end
 
 private
