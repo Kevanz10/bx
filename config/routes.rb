@@ -13,6 +13,8 @@ Rails.application.routes.draw do
 
   get '/my_dashboard',  to: 'users#dashboard'
 
+  get '/my_referrals',  to: 'users#my_referrals'
+
   post '/send_donation',  to: 'users#donation_send'
 
   post '/request_donation', to: 'users#donation_request'

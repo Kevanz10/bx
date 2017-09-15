@@ -1,15 +1,19 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable, :confirmable, 
+  devise :database_authenticatable, :registerable, 
          :recoverable, :rememberable, :trackable, :validatable, :lockable
 
   has_many :chats, :foreign_key => :sender_id
-
   has_many :donations
   has_many :requests
   before_save :set_saldo_zero
-  
+  acts_as_tree order: "email"
+  extend ActsAsTree::TreeView
+  attr_accessor :refferal
+
+
+
   def set_saldo_zero
     self.saldo ||= 0
   end
