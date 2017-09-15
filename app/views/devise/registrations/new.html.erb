@@ -6,13 +6,34 @@
           <div class="login-box col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-12 col-xs-offset-0">
             <h3>Register</h3>
 
-            <%= form_for(resource, as: resource_name, url: registration_path(resource_name), class: 'col-sm-10 col-sm-offset-1 col-xs-12 col-xs-offset-0') do |f| %>
+             <%= form_for(resource, as: resource_name, url: registration_path(resource_name), class: 'col-sm-10 col-sm-offset-1 col-xs-12 col-xs-offset-0') do |f| %>
               <%= devise_error_messages! %>
 
               <div class="field">
                 <%= f.label :email %><br />
                 <%= f.email_field :email, autofocus: true %>
               </div>
+
+              <div class="field">
+                <%= f.label 'Bitcoin wallet' %><br />
+                <%= f.text_field :btc, autofocus: true %>
+              </div>
+
+              <div class="field">
+                <%= f.label 'Country' %><br />
+                <%= f.text_field :country, autofocus: true %>
+              </div>
+
+              <div class="field">
+                <%= f.label 'Phone' %><br />
+                <%= f.text_field :phone, autofocus: true %>
+              </div>
+
+              <div class="field">
+                <%= f.label 'Referral Email' %><br />
+                <%= f.email_field :refferal, autofocus: true %>
+              </div>
+
 
               <div class="field">
                 <%= f.label :password %>
