@@ -8,12 +8,15 @@ class UsersController < ApplicationController
     end
 
     def donation_send
-      if params[:value]
-        current_user.send_donation(donation_params[:value].to_i)
-        redirect_to '/my_dashboard', :notice => "Donation succesfully sent" 
-      else
-        redirect_to '/my_dashboard', :notice => "Invalid donation value" 
-      end
+        if params[:value]
+            if   current_user.send_donation(donation_params[:value].to_i)
+                redirect_to '/my_dashboard',  :notice => "Donation sucessfully sent" 
+            else
+                redirect_to '/my_dashboard', :notice => "Invalid donation value" 
+            end
+        else
+            redirect_to '/my_dashboard', :notice => "No donation value specified" 
+        end
     end
 
     def donation_request
@@ -30,8 +33,17 @@ class UsersController < ApplicationController
        render layout: "dashboard_layout"
     end
 
+    def account_balance
+        @donations = current_user.donations
+        @requests = current_user.requests
+        render layout: "dashboard_layout"
+    end
+
+    def news
+        render layout: "dashboard_layout"
+    end
 private
-  def donation_params
-    params.permit(:value)
-  end
+    def donation_params
+      params.permit(:value)
+    end
 end

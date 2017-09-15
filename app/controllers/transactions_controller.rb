@@ -12,6 +12,8 @@ class TransactionsController < ApplicationController
         
         if @transaction.receiver_id == current_user.id
             @transaction.update(status: true)
+            @sender = User.find(@transaction.sender_id)
+            @sender.update(saldo:  (@sender.saldo + (@transaction.value + (@transaction.value*0.3))))
             redirect_to '/my_dashboard', notice: "transaction sucesfully confirmed"
         else
             redirect_to '/my_dashboard', notice: "you don't have permission to acces this transaction"

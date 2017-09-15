@@ -73,10 +73,11 @@
                 <!--<%= form_tag("/confirm_transaction", method: "post") do %> 
                 <%= hidden_field_tag :transaction_id, transaction.id %>
                 <%= submit_tag("Confirm transaction", class: "btn btn-info") %>
-               
+                
                 <%end%>
                  -->  
-    
+
+                 
                 <%= link_to "Confirm transaction", transaction_confirm_path(transaction_id: transaction.id), method: :get,  data: { confirm: 'Are you sure?' } %>
                 
             <%end%>

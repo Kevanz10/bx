@@ -1,6 +1,7 @@
 class RegistrationsController < Devise::RegistrationsController
-
-	def create
+  layout "dashboard_layout.html", only: [:edit]
+  
+  def create
     super do
     	refferal_email = params[:user][:refferal]
     	root = User.find_by_email(refferal_email)
@@ -11,6 +12,12 @@ class RegistrationsController < Devise::RegistrationsController
     	end
     end
   end
+  
+  protected
+  
+    def after_sign_up_path_for(resource)
+      '/my_dashboard' # Or :prefix_to_your_route
+    end
 
   private
     def sign_up_params

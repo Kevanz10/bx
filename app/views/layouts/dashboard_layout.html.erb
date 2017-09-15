@@ -35,12 +35,23 @@
   		<div class="sidebar">
 
   			<div class="sidebar-wrapper">
-  				<div class="">
-                    <a href="/" class="logo" style="border-bottom: 1px solid #fff;">
+  				<div style="border-bottom: 1px solid #fff;">
+                    <a href="/" class="logo" >
                         <i class="pe-7s-cash"></i>
                         <p>Donating Goals</p>
-                    </a>      
+                    </a>
+                    <div style="padding: 10px 30px;">
+                        <% if user_signed_in? %>
+                            <p>Hello <%= current_user.email %></p>  
+                            <p>Balance <%= current_user.saldo %></p>  
+                        <% end%> 
+                    </div>
+                        
                 </div>
+
+                
+
+                
 
                 <ul class="nav own-nav">
                         
@@ -52,7 +63,7 @@
                     </li>
 
                     <li>
-                        <a href="/#">
+                        <a href="/account_balance">
                             <i class="fa fa-folder-o" aria-hidden="true"></i>
                             <p>Account Balance </p>
                         </a>
@@ -66,25 +77,50 @@
                     </li>
 
                     <li>
-                        <a href="/#">
+                        <a href="/chats">
                            
-                            <i class="fa fa-newspaper-o" aria-hidden="true"></i>
-                            <p>News Info</p>
+                            <i class="fa fa-comments" aria-hidden="true"></i>
+                            <p>Conversations</p>
                         </a>
                     </li>
 
-                    <li>
-                        <a href="/#">
-                            <i class="fa fa-graduation-cap" aria-hidden="true"></i>
-                        <p>Support</p>
+
+                     <li>
+                        <a href="/news">
+                           
+                            <i class="fa fa-newspaper-o" aria-hidden="true"></i>
+                            <p>News info</p>
                         </a>
                     </li>
+
+                   
+    
                     <li>
-                        <a href="/users/edit">   
-                            <i class="fa fa-cogs" aria-hidden="true"></i>
-                            <p>Account settings</p>
-                        </a>
+                        <% if user_signed_in? %>
+                            <%= link_to edit_user_registration_path  do %>
+                                <i class="fa fa-cogs" aria-hidden="true"></i>
+                                <p>Account settings</p>
+                            <%end%>
+                        <%end%>
                     </li>
+
+                    <li>
+                        <%= link_to  destroy_user_session_path, method: :delete do%>
+                            <i class="fa fa-sign-out" aria-hidden="true"></i>
+                            <p>Log out</p>
+                        <%end%>
+                    </li>
+
+                    <li>
+                        <%@admin = User.where(admin: true)%>
+                        <%= button_to chats_path(sender_id: current_user.id, recipient_id: @admin.ids.first), class: 'button button-primary button-sm' do %>
+                            <p>
+                                <i class="fa fa-plug" aria-hidden="true"></i>
+                                Technical support
+                            </p>
+                        <%end%>
+                    </li>
+
 
                 </ul>
             </div>
