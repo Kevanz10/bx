@@ -39,6 +39,8 @@ class User < ApplicationRecord
   
     end
 
+    donation.id
+
   end
   
   
@@ -116,6 +118,8 @@ class User < ApplicationRecord
     #busco si hay donaciones pendientes por repartir
     donation =  get_pending_donation
 
+    self.update(saldo: self.saldo - request_value)
+    
     if donation
 
       while((request.pending > 0) && donation )

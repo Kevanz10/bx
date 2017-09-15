@@ -35,12 +35,23 @@
   		<div class="sidebar">
 
   			<div class="sidebar-wrapper">
-  				<div class="">
-                    <a href="/" class="logo" style="border-bottom: 1px solid #fff;">
+  				<div style="border-bottom: 1px solid #fff;">
+                    <a href="/" class="logo" >
                         <i class="pe-7s-cash"></i>
                         <p>Donating Goals</p>
-                    </a>      
+                    </a>
+                    <div style="padding: 10px 30px;">
+                        <% if user_signed_in? %>
+                            <p>Hello <%= current_user.email %></p>  
+                            <p>Balance <%= current_user.saldo %></p>  
+                        <% end%> 
+                    </div>
+                        
                 </div>
+
+                
+
+                
 
                 <ul class="nav own-nav">
                         
@@ -79,12 +90,22 @@
                         <p>Support</p>
                         </a>
                     </li>
+                    <% if user_signed_in? %>
                     <li>
-                        <a href="/users/edit">   
+                        <%= link_to edit_user_registration_path  do %>
                             <i class="fa fa-cogs" aria-hidden="true"></i>
                             <p>Account settings</p>
-                        </a>
+                        <%end%>
                     </li>
+
+                    <li>
+                        <%= link_to  destroy_user_session_path, method: :delete do%>
+                            <i class="fa fa-sign-out" aria-hidden="true"></i>
+                            <p>Log out</p>
+                        <%end%>
+                    </li>
+
+                    <% end %>
 
                 </ul>
             </div>

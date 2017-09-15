@@ -12,10 +12,13 @@ class UsersController < ApplicationController
 
     def donation_send
         if params[:value]
-            current_user.send_donation(donation_params[:value].to_i)
-            redirect_to '/my_dashboard', :notice => "Donation succesfully sent" 
+            if   current_user.send_donation(donation_params[:value].to_i)
+                redirect_to '/my_dashboard',  :notice => "Donation sucessfully sent" 
+            else
+                redirect_to '/my_dashboard', :notice => "Invalid donation value" 
+            end
         else
-            redirect_to '/my_dashboard', :notice => "Invalid donation value" 
+            redirect_to '/my_dashboard', :notice => "No donation value specified" 
         end
     end
 
