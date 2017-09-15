@@ -1,5 +1,6 @@
 class RegistrationsController < Devise::RegistrationsController
-
+  layout "dashboard_layout.html", only: [:edit]
+  
   protected
   
     def after_sign_up_path_for(resource)

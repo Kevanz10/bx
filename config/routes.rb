@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   mount ActionCable.server => '/cable'
 
   root to: 'static#home'
-  get '/que_es', to: 'static#que_es'
+  get '/que_es', to: 'static#coming_soon'
   get '/como_funciona', to: 'static#como_funciona'
   get '/testimonios', to: 'static#testimonios'
   get '/contacto', to: 'static#contacto'
@@ -35,6 +35,8 @@ Rails.application.routes.draw do
 
   get '/coming_soon',  to: 'static#coming_soon', as: 'coming'
 
+  get '/account_balance',  to: 'users#account_balance'
 
+  get '/news',  to: 'users#news'
 
 end

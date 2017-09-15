@@ -20,6 +20,7 @@ class MessagesController < ApplicationController
       end
     end
     @message = @chat.messages.new
+    render layout: "dashboard_layout"
   end
 
   def new

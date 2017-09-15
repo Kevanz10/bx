@@ -31,6 +31,16 @@ class UsersController < ApplicationController
         end
     end
 
+    def account_balance
+        @donations = current_user.donations
+        @requests = current_user.requests
+        render layout: "dashboard_layout"
+    end
+
+    def news
+        
+        render layout: "dashboard_layout"
+    end
 private
     def donation_params
       params.permit(:value)
