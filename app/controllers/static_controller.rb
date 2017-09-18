@@ -14,4 +14,8 @@ class StaticController < ApplicationController
 
   def contacto
   end
+
+  def coming_soon
+    render layout: "blank"
+  end
 end

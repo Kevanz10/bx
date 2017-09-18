@@ -1,15 +1,21 @@
   <!DOCTYPE html>
   <html>
-  <head>
-    <title>ProjectBx</title>
-    <%= csrf_meta_tags %>
+    <head>
+        <title>ProjectBx</title>
+        <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all'%>
-    <%= javascript_include_tag 'application' %>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.4.3/sweetalert2.min.js'>
-    </script>
-    <link href='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.4.3/sweetalert2.min.css' rel='stylesheet'>
-  </head>
+        <%= stylesheet_link_tag    'application', media: 'all'%>
+        <%= javascript_include_tag 'application' %>
+
+        <%= action_cable_meta_tag %>
+
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.4.3/sweetalert2.min.js'></script>
+        <link href='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.4.3/sweetalert2.min.css' rel='stylesheet'>
+
+        <script src="https://use.fontawesome.com/e4b26ed800.js"></script>
+
+        <link href="https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+    </head>
 
   <body>
     <div id="page-wrapper" class="page-wrapper">
@@ -25,7 +31,7 @@
                     <div class="logo-container">
                         <a href="/" class="logo">
                             <i class="pe-7s-cash"></i>
-                            <p>Donating dreams</p>
+                            <p>Donating goals</p>
                         </a>
                     </div>
 

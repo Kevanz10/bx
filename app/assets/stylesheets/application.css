@@ -10,6 +10,16 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
+
+ *= require bootstrap.min
+ *= require dashboard
+ *= require donation_cards
+ *= require owl.carousel.min
+ *= require owl.theme.default.min
+ *= require slick-theme
+ *= require slick
+ *= require slicknav.min
+ *= require styles
  *= require_self
+ *= require chat
  */
