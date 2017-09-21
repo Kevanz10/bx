@@ -23,6 +23,7 @@
 //= require chat-messages
 //= require_tree ./channels
 //= require donations_cards
+//= require intlTelInput
 //= require_self
 
 

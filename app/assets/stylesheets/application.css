@@ -22,4 +22,5 @@
  *= require styles
  *= require_self
  *= require chat
+ *= require intlTelInput
  */
