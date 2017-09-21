@@ -1,13 +1,13 @@
 
 /* =======================================================
 *
-* 	Template Style 
+* 	Template Style
 *
 * ======================================================= */
 @import  "/assets/fonts/pe-icon-7-stroke/css/pe-icon-7-stroke.css";
 
 body {
-  
+
   font-weight: 400;
   font-size: 16px;
   line-height: 1.7;
@@ -183,7 +183,6 @@ form label {
   margin: 0 auto;
 }
 .display-t .display-tc {
-  display: table-cell !important;
   vertical-align: middle;
   min-height: 700px;
 }
@@ -580,7 +579,7 @@ form label {
 }
 
 .js .animate-box {
-  opacity: 0;
+  opacity: 1;
 }
 
 /*# sourceMappingURL=style.css.map */

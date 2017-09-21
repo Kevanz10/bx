@@ -335,6 +335,8 @@ Main Font
 .menu li a.menu-item,
 .menu .dropdown a,
 .hero-section h1,
+.hero-section h2,
+.hero-section h3,
 .price-box h5,
 .price-box h6,
 .testimonial footer,
@@ -601,10 +603,10 @@ Buttons
 .button {
     border-radius: 100px;
     display: inline-block;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
     text-transform: uppercase;
     text-align: center;
-    font-weight: 300;
+    font-weight: 600;
     -webkit-transition: all .5s ease;
     transition: all .5s ease;
 }
@@ -618,6 +620,16 @@ Buttons
 .button-md {
     font-size: 11px !important;
     padding: 16px 48px !important;
+}
+
+.button-md:hover {
+  background: #fff;
+  border: 1px solid #6d9f00;
+  color: #6d9f00!important;
+  width: 67%;
+  font-size: 16px!important;
+  border-radius: 10px;
+
 }
 
 .button-sm {
@@ -761,7 +773,7 @@ Hamburger Menu Toggle
     transition: all .5s ease;
 }
 .scrolled .slicknav_btn {
-    height: 65px;
+    height: 60px;
 }
 .slicknav_btn .slicknav_icon {
     margin: 0;
@@ -902,7 +914,8 @@ Main Nav non-responsive styles
 
 /*Right side links*/
 .main-nav .right-links {
-    float: right;
+  width: 73%;
+  float: right;
 }
 
 /*appearance on scroll*/
@@ -924,6 +937,9 @@ Main Nav non-responsive styles
 /*colored menu (background color with white links)*/
 .main-nav.colored-menu { background: #1d5a96; }
 .main-nav.colored-menu .menu li a.menu-item { color: #fff; }
+.nav>li>a:hover{
+  background: rgba(238, 238, 238, 0);
+}
 
 /* -----------------------------------------------------------------------------
 
@@ -931,8 +947,9 @@ Logo
 
 ----------------------------------------------------------------------------- */
 .logo-container {
-    float: left;
-    line-height: 80px;
+  float: left;
+  width: 27%;
+  height: 100%;
 }
 
 .logo-container a {
@@ -964,6 +981,7 @@ Logo
     line-height: 20px;
     font-weight: 700;
     font-size: 20px;
+    margin: 0px;
 }
 
 .main-nav.transparent-dark .logo i,
@@ -996,13 +1014,13 @@ Menu on the right
 }
 
 .menu li a.menu-item {
-    position: relative;
-    display: inline-block;
-    text-transform: uppercase;
-    font-size: 11px;
-    padding: 0 14px;
-    line-height: 80px;
-    letter-spacing: 1.3px;
+  position: relative;
+  display: inline-block;
+  text-transform: uppercase;
+  font-size: 11px;
+  padding: 33px 14px 26px 14px;
+  /* line-height: 76px; */
+  letter-spacing: 1.3px;
 }
 
 /*Adds a bottom arrow for links with dropdowns*/
@@ -1095,7 +1113,7 @@ Menu on the right
 /*menu after scroll*/
 .scrolled .logo-container,
 .scrolled .menu li a.menu-item {
-    line-height: 65px;
+    line-height: 15px;
     color: #fff!important;
 }
 
@@ -1109,7 +1127,7 @@ Hero Section
     height: 100vh;
     position: relative;
     overflow: hidden;
-    background: #1d5a96;
+    background: #fff;
 }
 
 .hero-section .container-fluid,
@@ -1131,10 +1149,12 @@ Hero Section
 
 .hero-center {
     opacity: 0;
-    z-index: 999999;
-    position: absolute;
-    top: 50%;
-    left: 50%;
+    z-index: 1;
+    width: 50%;
+    position: relative;
+    top: 26.5%;
+    left: 26%;
+    background: grey;
     -webkit-transition: all .8s;
     transition: all .8s;
     -webkit-transform: translateX(-50%) translateY(calc(-50% + 100px));
@@ -1148,20 +1168,38 @@ Hero Section
 }
 
 .hero-section h1 {
-    color: #fff;
-    text-align: center;
+    color: #1d5a96;
+    text-align: justify;
     font-size: 64px;
     text-transform: uppercase;
-    font-weight: 700;
+    font-weight: 800;
+}
+
+.hero-section h2 {
+    color: #1d5a96;
+    text-align: justify;
+    font-size: 62px;
+    text-transform: uppercase;
+    font-weight: 900;
+    margin: 0px;
+}
+
+.hero-section h3 {
+    color: #1d5a96;
+    text-align: justify;
+    font-size: 55px;
+    text-transform: uppercase;
+    font-weight: 900;
+    margin: 0px;
 }
 
 .hero-section p {
-    color: #fff;
-    text-align: center;
-    width: 50%;
-    margin: 0 auto;
-    margin-top: 15px;
-    margin-bottom: 20px;
+  color: #1d5a96;
+  text-align: justify;
+  margin: 31px 0px;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.3;
 }
 
 .hero-section span {
@@ -1272,14 +1310,13 @@ Page Title
 ------------------------------------------------*/
 .page-title {
     padding-bottom: 100px;
-    background: #fbfbfb;
+    background: #34393D;
     margin-top: 80px;
     border-bottom: 1px solid #eaeaea;
 }
 
 .page-title h1 {
     font-size: 38px;
-    margin: 60px 0px 12px;
 }
 
 .page-title p {
@@ -1386,12 +1423,10 @@ Pricing Tables
 
 ------------------------------------------------*/
 .price-container {
-    padding: 40px 0;
-    text-align: center;
-    background: #f8f8f8;
-    border-bottom: 1px solid #e5e5e5;
-    overflow: hidden;
-    position: relative;
+  padding: 40px 0 0px;
+  text-align: center;
+  border-bottom: 1px solid #e5e5e5;
+  position: relative;
 }
 
 .price-box .button {
@@ -1414,7 +1449,7 @@ Pricing Tables
 }
 
 .price-box h6 {
-    font-size: 13px;
+    font-size: 11px;
     font-weight: 600;
     color: #3a3a3a;
     display: inline-block;
@@ -2165,16 +2200,18 @@ Footer
 
 ------------------------------------------------*/
 .footer {
-    background: #1b2126;
-    padding-top: 80px;
+    background: #114F82;
+    padding: 41px 0px;
 }
 
 .footer h6 {
-    color: #fff;
-    text-transform: uppercase;
-    font-size: 12px;
-    margin-bottom: 20px;
-    letter-spacing: 1px;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 17px;
+  margin-bottom: 20px;
+  margin-top: 4px;
+  letter-spacing: 1px;
+  font-weight: 600;
 }
 
 .footer p {
@@ -2194,10 +2231,9 @@ Footer
 
 /*links for information and support columns*/
 .footer ul.list-links li a {
-    font-size: 13px;
-    letter-spacing: .2px;
-    padding: 4px 0;
-    display: block;
+  font-size: 15px;
+  padding: 7px 0;
+  display: block;
 }
 
 /*social media links*/
@@ -2349,7 +2385,7 @@ Misc
     font-size: 100px;
     z-index: 9999;
     font-size: 100px;
-    color: #fff;
+    color: #000;
     font-family: 'Pe-icon-7-stroke';
     speak: none;
     font-style: normal;
@@ -2471,15 +2507,153 @@ Margin Shortcodes
 
 .mb160 { margin-bottom: 160px !important; }
 
+.collapse {
+    display: none;
+}
+
+.navbar-toggle {
+    display: none;
+}
+
+.countdown-wrap{
+  width: 50%;
+  padding: 124px;
+  float: left;
+  background: #1d5a96;
+}
 
 
 /* Portrait tablet to landscape and desktop */
-@media screen and (max-width: 992px) {
+@media (max-width: 768px) {
+  .hero-section{
+    height: 76vh;
+  }
+
+  .own-logo{
+    display: none;
+  }
+  .own-row {
+    height: 156px!important;
+  }
+
+  #services{
+    margin-top: 0px!important;
+  }
+  .countdown-wrap{
+    width: 100%;
+    height: 500px!important;
+  }
+
+  #fh5co-container{
+     height: 300px!important;
+  }
+
+  .display-tc{
+    min-height: 100px!important;
+  }
+
+  .display-t{
+    min-height: 100px!important;
+    height: 100px!important;
+  }
+
+  .coment{
+    top: 492px!important;
+    margin: 26px!important;
+    padding: 0px!important;
+    font-size: 21px!important;
+    width: 92%!important;
+  }
+
+  .box-metas{
+    opacity: 0;
+  }
+
+  .slick-slide{
+    opacity: 0!important;
+  }
+
+  #count{
+    opacity: 1!important;
+  }
+
+  #page{
+    height: 400px!important;
+  }
+
+  .hero-section{
+    height: 400px!important;
+  }
+  .navbar-toggle {
+      display: block;
+  }
+
     .logo-container {
-        padding-left: 20px;
-        position: absolute;
-        z-index: 99999999;
+      position: absolute;
+      float: none;
+      width: 56%;
+      height: auto;
+      vertical-align: middle;
+      margin: 0px 206px 10px;;
     }
+
+    .menu > li {
+      width: 100%;
+      vertical-align: middle;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+
+    .logo{
+      padding: 0px 10px 10px 10px!important;
+    }
+
+    .logo i{
+        color: #fff;
+        line-height: 20px;
+        font-size: 45px;
+        margin: 20px;
+        vertical-align: middle;
+      }
+
+    .logo p{
+        color: #fff;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        display: inline-block;
+        vertical-align: middle;
+        line-height: 20px;
+        margin: 10px;
+        font-weight: 700;
+        font-size: 20px;
+      }
+
+      .main-nav .right-links {
+        width: 100%;
+        float: none;
+      }
+
+      .menu .dropdown{
+        top: -10%;
+        left: 420px;
+      }
+
+      #botonNav{
+        width: 30%;
+      }
+
+      #botonNav a:hover {
+        background: rgb(255, 255, 255);
+        color: #8BC34A!important;
+        border: 1px solid;
+      }
+
+      .navbar-fixed-top .navbar-collapse {
+        max-height: 100%;
+        margin: 0px;
+        padding: 0px;
+      }
 
     .hero-section h1 {
         font-size: 48px;
@@ -2493,13 +2667,21 @@ Margin Shortcodes
         font-size: 13px!important;
         padding: 20px!important;
     }
+
     .js #menu {
-        display:none;
+      display: grid;
+      height: 640px;
+      width: 100%;
     }
 
-    .js .slicknav_menu {
-        display:block;
+
+    .navbar-fixed-bottom .navbar-collapse, .navbar-fixed-top .navbar-collapse{
+      max-height: 100%;
     }
+
+    /*.js .slicknav_menu {
+        display:block;
+    }*/
 
     .menu-item {
         padding: 20px 35px!important;
@@ -2515,9 +2697,10 @@ Margin Shortcodes
     }
 
     .dropdown {
-        margin: 0!important;
-        background: #161b1f;
-        border-bottom: 4px solid #6d9f00;
+      margin: 0!important;
+      background: rgba(22, 27, 31, 0);
+      border-bottom: 0px;
+      padding-left: 200px!important;
     }
 
     .dropdown li a {
@@ -2577,7 +2760,7 @@ Margin Shortcodes
     .mb-sm-100 { margin-bottom: 100px !important; }
 }
 
-@media (max-width: 768px) {
+@media (min-width: 768px) {
     .hero-section h1 {
         font-size: 32px;
     }
@@ -2698,4 +2881,157 @@ Margin Shortcodes
 
 .about{
   position: absolute;
+}
+
+.pill
+{
+  width: 0;
+  height: 2px;
+  margin: 0 auto;
+
+  transition: all .5s;
+  text-decoration: none;
+
+  background: transparent;
+}
+
+.menu > li:hover .pill
+{
+    width: 100%;
+    height: 2px;
+    margin: 0 auto;
+
+    transition: all .5s;
+
+    color: #fff;
+    background: #fff;
+}
+
+.own-title{
+  padding: 80px 20px 20px 157px;
+}
+
+.foto-slider{
+  width: 100%;
+  height: auto;
+}
+
+.img-services{
+  width: 100%;
+  height: 100%;
+}
+
+.box-metas{
+  width: 28%;
+  height: 437px;
+  padding: 24px 30px;
+  position: absolute;
+  left: 62%;
+  background: #114F82;
+}
+
+.par-metas{
+  color: #4174A1;
+  font-weight: 600;
+  font-size: 22px;
+  margin: 0px;
+}
+
+.coment{
+  position: absolute;
+  width: 50%;
+  height: auto;
+  top: 1056px;
+  margin: 15px 62px;
+  font-size: 24px;
+  padding: 0px 20px;
+}
+
+.sec3{
+  text-align: center;
+  font-size: 40px;
+  font-weight: 800;
+  color: #114f82;
+  margin: 0px;
+}
+
+.col-terr{
+  text-align: center;
+  padding-top: 10px;
+}
+
+.col-terr h1{
+ color: #fff;
+ font-size: 60px;
+}
+
+.info-met{
+  width: 100%;
+  padding: 48px 21px 0px 21px;
+  margin: 47px 0px 0px;
+}
+
+.title-union h1{
+  color: #fff;
+  font-weight: 600;
+  margin-left: 10%;
+  margin-bottom: 0px;
+  margin-top: 26%;
+}
+
+.title-union h2{
+  color: #93421E;
+  font-weight: 900;
+  margin-left: 10%;
+}
+
+.last-text{
+  width: 100%;
+    justify-content: center;
+    display: flex;
+    flex-flow: column;
+    margin-bottom: 64px;
+    align-items: center;
+}
+
+.last-text p{
+  vertical-align: middle;
+  margin: 0 auto;
+  padding: 46px;
+  text-align: center;
+  font-size: 19px;
+  font-weight: 600;
+  width: 50%;
+  line-height: 1.4;
+}
+
+.last-text h1{
+  text-align: center;
+    margin-top: 73px;
+    color: #114F82;
+    font-weight: 900;
+}
+
+.fotos-footer:hover img{
+  border: 1px solid white;
+  border-radius: 50%;
+}
+
+.own-btn{
+  font-size: 16px!important;
+  border-radius: 10px;
+  padding: 15px 15px !important;
+  background: #114F82;
+  width: 25%;
+}
+
+.own-btn:hover{
+  background: #fff!important;
+  width: 26%;
+  color: #114F82!important;
+  border: 1px solid #114F82;
+}
+
+.own-btn2:hover{
+  width: 47%;
 }

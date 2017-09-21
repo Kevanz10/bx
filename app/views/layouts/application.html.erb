@@ -1,212 +1,212 @@
-  <!DOCTYPE html>
-  <html>
-    <head>
-        <title>ProjectBx</title>
-        <%= csrf_meta_tags %>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ProjectBx</title>
+    <%= csrf_meta_tags %>
 
-        <%= stylesheet_link_tag    'application', media: 'all'%>
-        <%= javascript_include_tag 'application' %>
+    <%= stylesheet_link_tag    'application', media: 'all'%>
+    <%= javascript_include_tag 'application' %>
 
-        <%= action_cable_meta_tag %>
+    <%= action_cable_meta_tag %>
 
-        <script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.4.3/sweetalert2.min.js'></script>
-        <link href='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.4.3/sweetalert2.min.css' rel='stylesheet'>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.4.3/sweetalert2.min.js'></script>
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.4.3/sweetalert2.min.css' rel='stylesheet'>
 
-        <script src="https://use.fontawesome.com/e4b26ed800.js"></script>
+    <script src="https://use.fontawesome.com/e4b26ed800.js"></script>
 
-        <link href="https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
-    </head>
+    <link href="https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+  </head>
 
   <body>
     <div id="page-wrapper" class="page-wrapper">
-        <!-- Main Content -->
-        <div class="main-content">
-
-            <!-- Navigation Bar -->
-            <nav id="main-nav" class="main-nav colored-menu">
-
-                <div class="container">
-
-                    <!-- Logo Container -->
-                    <div class="logo-container">
-                        <a href="/" class="logo">
-                            <i class="pe-7s-cash"></i>
-                            <p>Donating goals</p>
-                        </a>
-                    </div>
-
-                    <!-- Right Side Links -->
-                    <div class="right-links">
-
-                        <!-- Menu Start -->
-                        <ul id="menu" class="menu">
-
-                            <!-- Menu Item -->
-
-
-                            <!-- Menu Item -->
-                            <li><a href="/que_es" class="menu-item">Que es?</a></li>
-
-                            <!-- Menu Item -->
-                            <li><a href="/como_funciona" class="menu-item ">Como funciona?</a></li>
-
-                            <!-- Menu Item -->
-                            <li><a href="/testimonios" class="menu-item ">Testimonios</a>
-                            </li>
-
-                            <li>
-                              <a href="#" class="menu-item has-drop">Info</a>
-                                <ul class="dropdown">
-                                    <li>
-                                        <a href="page-about.html">Ayuda
-                                        <span>Como ayudar?</span></a>
-                                    </li>
-                                    <li>
-                                        <a href="page-contact-form.html">Sobre Bitcoin
-                                        <span>Sobre bitcoins</span></a>
-                                    </li>
-                                </ul>
-                            </li>
-
-                            <!-- Menu Item -->
-
-                            <!-- Menu Item -->
-                            <li><a href="/contacto" class="menu-item ">Contact</a>
-                            </li>
-
-                            <% if user_signed_in? %>
-
-                            <li> <%= link_to current_user.email.truncate(7), edit_user_registration_path, :class => 'menu-item' %> </li>
-                                <li> <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'button button-sm button-primary'  %>
-                                </li>
-                            <% else %>
-                                <li><a href="/users/sign_in" class="menu-item ">Login</a>
-                                </li>
-                                <li>
-                                <a href="/users/sign_up" class="button button-sm button-primary">Sign Up</a>
-                                </li>
-                            <% end %>
-                        </ul>
-
-                    </div>
-
-                </div>
-
-            </nav>
-
-
-
-             <% if notice %>
-                <script>
-                    swal("<%= notice %>");
-                </script>
-            <% end %>
-
-            <% if alert%>
-                <script>
-                  swal("<%= alert %>");
-                </script>
-            <% end %>
-
-
-            <%= yield %>
-
-
-            <!-- call to action section -->
-            <div class="cta-1 bg-img bg-img-1 color-overlay pt80 pb80">
-
-                <div class="container">
-
-                    <div class="table">
-
-                        <div class="row">
-
-                            <div class="mb-sm-40 col-md-8 col-sm-12 col-xs-12 content text-center-sm">
-
-                                <span>Oferta de tiempo limitado</span>
-                                <h4 class="section-title">Contactenos hoy para recibir un beneficios especial al realizar su primera donación. </h4>
-                                <p>Nunc cursus imperdiet tristique. Donec placerat maximus dignissim. Pellentesque interdum ligula id enim interdum ullamcorper. Vivamus ac mauris egestas nisl pharetra porttitor quis ut orci. Curabitur ullamcorper ex ut massa lobortis sagittis. Aliquam tincidunt elit ac risus sodales egestas.</p>
-
-                            </div>
-
-                            <div class="col-md-4 col-sm-12 col-xs-12 side text-right text-center-sm">
-                                 <a href="#" class="button button-primary button-md">Contact Us Today</a>
-                            </div>
-
-                        </div><!-- //row -->
-
-                    </div>
-
-                </div><!-- //container -->
-
-
-            </div>
-          </div><!-- //container -->
-        </div>
-        <!-- //call to action section -->
-
-        <!-- footer -->
-        <footer class="footer">
+      <!-- Main Content -->
+      <div class="main-content">
+        <!-- Navigation Bar -->
+        <nav id="main-nav" class="navbar navbar-fixed-top main-nav colored-menu" style="margin:0px; box-shadow: 2px 2px 12px rgba(22, 70, 117, 0.54);">
           <div class="container">
-            <div class="row">
-              <div class="col-md-4 col-sm-12 col-xs-12 mb-sm-40">
-                <a href="index.html" class="logo mb20">
-                    <i class="pe-7s-cash"></i>
-                    <p>Donating dreams</p>
-                </a>
-                <p class="mb10">Nullam pellentesque mauris et lorem congue varius. Morbi iaculis diam leo, ut tempus tellus laoreet porttitor.</p>
-                <ul class="list-sm">
-                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                </ul>
-              </div>
 
-              <div class="col-md-2 col-sm-6 col-xs-12 mb-sm-40">
-                <h6>Information</h6>
-                <ul class="list-links">
-                    <li><a href="">Que es?</a></li>
-                    <li><a href="">Como funciona?</a></li>
-                    <li><a href="">Testimonios?</a></li>
-                    <li><a href="">Información</a></li>
-                </ul>
-              </div>
-              <div class="col-md-2 col-sm-6 col-xs-12 mb-sm-40">
-                <h6>Support</h6>
-                <ul class="list-links">
-                    <li><a href="">Preguntas Frecuentes</a></li>
-                    <li><a href="">Contacto</a></li>
-                </ul>
-              </div>
+            <!-- Logo Container -->
+            <div class="logo-container">
+              <a href="/" class="logo" style="padding: 27px 10px 10px 10px;!important">
+                <i class="pe-7s-cash"></i>
+                <p>Donating goals</p>
+              </a>
+            </div>
 
-              <div class="col-md-4 col-sm-12 col-xs-12 mb-sm-40">
-                <h6>Subscribción</h6>
-                <p>Inscribete para recibir las ultimas noticias sobre Donating Dreams</p>
-                <form action="index.html" method="post" class="newsletter">
-                    <input type="email" name="newsletter" placeholder="Enter Your Email">
-                    <button><i class="fa fa-paper-plane"></i></button>
-                </form>
-              </div>
+            <div class="navbar-right buttMenu" style:"width: 73%; float:right!important;">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" style="background-color: #fff;">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar glyphicon glyphicon-tasks"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+            </div>
 
-              <div class="col-xs-12 sub-footer">
-                <p>Copyright &copy; 2016 OneClickPixels. All rights reserved.  <a href="https://icons8.com" target="_blank">Icon pack by Icons8</a></p>
-                <ul class="list-cc">
-                    <li><img src="https://maxcdn.icons8.com/Color/PNG/48/Finance/visa-48.png" title="Visa" alt="credit"></li>
-                    <li><img src="https://maxcdn.icons8.com/Color/PNG/48/Finance/discover-48.png" title="Visa" alt="credit"></li>
-                    <li><img src="https://maxcdn.icons8.com/Color/PNG/48/Finance/paypal-48.png" title="Visa" alt="credit"></li>
-                    <li><img src="https://maxcdn.icons8.com/Color/PNG/48/Finance/am_ex-48.png" title="Visa" alt="credit"></li>
-                    <li><img src="https://maxcdn.icons8.com/Color/PNG/48/Finance/google_wallet-48.png" title="Visa" alt="credit"></li>
-                    <li><img src="https://maxcdn.icons8.com/Color/PNG/48/Finance/bitcoin-48.png" title="Visa" alt="credit"></li>
-                </ul>
-              </div>
-            </div><!-- //row -->
-          </div><!-- //container -->
-        </footer>
-        <!-- //footer -->
-      </div>
-      <!-- //Main Content -->
-    </div>
-    <!-- // Page Wrapper -->
-  </body>
-  </html>
+            <!-- Right Side Links -->
+            <div id="navbar" class="navbar-collapse collapse right-links">
+              <!-- Menu Start -->
+              <ul id="menu" class="menu nav navbar-nav" style="float: right;">
+                <!-- Menu Item -->
+                <!-- Menu Item -->
+                <li>
+                  <a href="/que_es" class="menu-item">Que es?</a>
+                  <div class="pill"></li>
+
+                  <!-- Menu Item -->
+                  <li>
+                    <a href="/como_funciona" class="menu-item ">Como funciona?</a>
+                    <div class="pill"></li>
+
+                    <!-- Menu Item -->
+                    <li>
+                      <a href="/testimonios" class="menu-item ">Testimonios</a>
+                      <div class="pill"></li>
+
+                      <li>
+                        <a href="#" class="menu-item has-drop">Info</a>
+                        <div class="pill">
+                          <ul class="dropdown">
+                            <li>
+                              <a href="page-about.html">Ayuda
+                                <span>Como ayudar?</span>
+                              </a>
+                            </li>
+                            <li>
+                              <a href="page-contact-form.html">Sobre Bitcoin
+                                <span>Sobre bitcoins</span>
+                              </a>
+                            </li>
+                          </ul>
+                        </li>
+
+                        <!-- Menu Item -->
+
+                        <!-- Menu Item -->
+                        <li>
+                          <a href="/contacto" class="menu-item ">Contact</a>
+                          <div class="pill"></li>
+
+                          <% if user_signed_in? %>
+
+                          <li>
+                            <%= link_to current_user.email.truncate(7), edit_user_registration_path, :class => 'menu-item' %>
+                          </li>
+                          <li>
+                            <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'button button-sm button-primary'  %>
+                          </li>
+                        <% else %>
+                          <li>
+                            <a href="/users/sign_in" class="menu-item ">Login</a>
+                            <div class="pill"></li>
+                            <li id="botonNav">
+                              <a href="/users/sign_up" class="button button-sm button-primary" style="padding: 10px 46px!important; margin-top: 22px;">Sign Up</a>
+                            </li>
+                            <% end %>
+                          </ul>
+
+                        </div>
+
+                      </div>
+
+                    </nav>
+
+                    <% if notice %>
+                    <script>
+                      swal("<%= notice %>");
+                    </script>
+                    <% end %>
+
+                    <% if alert%>
+                    <script>
+                      swal("<%= alert %>");
+                    </script>
+                    <% end %>
+
+                    <%= yield %>
+
+                    <!-- footer -->
+                    <footer class="footer">
+                      <div class="container">
+                        <div class="row">
+                          <div class="col-md-4 col-sm-12 col-xs-12 mb-sm-40">
+                            <a href="index.html" class="logo mb20 own-logo">
+                              <i class="pe-7s-cash" style="font-size: 38px;"></i>
+                              <p style="font-size: 24px;">Donating goals</p>
+                            </a>
+                            <div class="dropdown" style="padding-left: 60px;">
+                              <button
+                                class="btn btn-default dropdown-toggle"
+                                type="button"
+                                id="dropdownMenu1"
+                                data-toggle="dropdown"
+                                aria-haspopup="true"
+                                aria-expanded="true"
+                                style="border-radius: 10px;width: 56%;height: 50px;vertical-align: middle;background: rgba(255, 255, 255, 0);margin: 0 auto;color: #fff;">
+                                Español
+                                <span class="caret"></span>
+                              </button>
+                              <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" style="top: 117%; left: 65px;">
+                                <li>
+                                  <a href="#">Ingles</a>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+
+                          <div class="col-md-2 col-sm-12 col-xs-12 mb-sm-40" style="padding: 0px; text-align: center;">
+                            <ul class="list-links">
+                              <li>
+                                <a href="">Nestra Filosofía</a>
+                              </li>
+                              <li>
+                                <a href="">Blog</a>
+                              </li>
+                              <li>
+                                <a href="">Empieza ya!</a>
+                              </li>
+                            </ul>
+                          </div>
+                          <div class="col-md-2 col-sm-12 col-xs-12 mb-sm-40" style="padding: 0px; text-align: center;">
+                            <ul class="list-links">
+                              <li>
+                                <a href="">Términos y condiciones</a>
+                              </li>
+                              <li>
+                                <a href="">Privacidad</a>
+                              </li>
+                              <li>
+                                <a href="">Ayuda</a>
+                              </li>
+                            </ul>
+                          </div>
+
+                          <div class="col-md-4 col-sm-12 col-xs-12 mb-sm-40" style:"padding-top: 5px;">
+                            <h6 style="text-align:center;">Nos recomiendan</h6>
+
+                            <div class="">
+                              <div class="col-xs-4 fotos-footer">
+                                <img src="/images/foto_9.png" alt="" style="width:100%">
+                                <p style="text-align:center;">Pedro Alonso</p>
+                              </div>
+                              <div class="col-xs-4 fotos-footer">
+                                <img src="/images/foto_9_2.png" alt="" style="width:100%">
+                                <p style="text-align:center;">Joam Jacob</p>
+                              </div>
+                              <div class="col-xs-4 fotos-footer">
+                                <img src="/images/foto_9_3.png" alt="" style="width:100%">
+                                <p style="text-align:center;">Lucio Pérez</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- //row -->
+                      </div>
+                      <!-- //container -->
+                    </footer>
+                    <!-- //footer -->
+                  </div>
+                  <!-- //Main Content -->
+                </div>
+                <!-- // Page Wrapper -->
+              </body>
+            </html>
